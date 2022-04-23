@@ -9,3 +9,5 @@ net.davidotek.pupgui2
 com.discordapp.Discord
 im.riot.Riot
 com.obsproject.Studio
+com.usebottles.bottles
+
