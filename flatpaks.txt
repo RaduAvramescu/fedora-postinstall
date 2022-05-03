@@ -1,5 +1,6 @@
 com.github.tchx84.Flatseal
 org.keepassxc.KeePassXC
+flathub org.mozilla.firefox
 org.libreoffice.LibreOffice
 com.vscodium.codium
 org.gimp.GIMP
@@ -10,4 +11,3 @@ com.discordapp.Discord
 im.riot.Riot
 com.obsproject.Studio
 com.usebottles.bottles
-

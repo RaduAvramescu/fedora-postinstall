@@ -1,5 +1,5 @@
 org.gnome.Nautilus.desktop
-firefox.desktop
+org.mozilla.firefox.desktop
 com.vscodium.codium.desktop
 com.discordapp.Discord.desktop
 com.valvesoftware.Steam.desktop
