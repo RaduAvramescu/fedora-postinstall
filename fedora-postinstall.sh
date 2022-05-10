@@ -22,7 +22,22 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
 # Set default Git branch to main
-git config --global init.defaultBranch main
+if [ $(which git) ]; then
+    echo -ne "
+-------------------------------------------------------------------------
+                    Setting up git
+-------------------------------------------------------------------------
+"
+    echo "Name: "
+    read name
+    git config --global --unset user.name
+    git config --global user.name ${name}
+    echo "Email Address:"
+    read email
+    git config --global --unset user.email
+    git config --global user.email ${email}
+    git config --global init.defaultBranch main
+fi
 
 echo -ne "
 -------------------------------------------------------------------------
