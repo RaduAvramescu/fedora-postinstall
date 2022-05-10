@@ -10,7 +10,7 @@ echo -ne "
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
 
 # Setup dark theme
-gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # Disable hot corners
 gsettings set org.gnome.desktop.interface enable-hot-corners false
