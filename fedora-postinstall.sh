@@ -91,19 +91,32 @@ echo -ne "
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update -y
 
-echo -ne "
+installFlatpaks() {
+    echo -ne "
 -------------------------------------------------------------------------
-                    Installing generic flatpaks
+                    Installing $1 flatpaks
 -------------------------------------------------------------------------
 "
-cat "./generic-flatpaks.txt" | while read line
-do
-	if flatpak list | grep -q "${line}"; then
-        echo "${line} is already installed"
-	else
-        flatpak install -y "${line}"
-	fi
-done
+
+    cat "$2" | while read line
+    do
+        if flatpak list | grep -q "${line}"; then
+            echo "${line} is already installed"
+        else
+            flatpak install -y "${line}"
+        fi
+    done
+}
+
+installFlatpaks "generic" "generic-flatpaks.txt"
+
+read -p "Do you want to install gaming flatpaks? (y/N) " answer
+
+case $answer in 
+    y ) installFlatpaks "gaming" "gaming-flatpaks.txt" ;;
+    N ) ;;
+    * ) ;;
+esac
 
 echo -ne "
 -------------------------------------------------------------------------
