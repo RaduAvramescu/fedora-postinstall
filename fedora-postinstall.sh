@@ -103,7 +103,7 @@ installFlatpaks() {
         if flatpak list | grep -q "${line}"; then
             echo "${line} is already installed"
         else
-            flatpak install -y "${line}"
+            flatpak install flathub -y --noninteractive "${line}"
         fi
     done
 }
