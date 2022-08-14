@@ -121,7 +121,7 @@ function handle_gaming_flatpaks() {
     read -p "Do you want to install gaming flatpaks? (y/N) " answer
 
     case $answer in 
-        y ) install_flatpaks "gaming" "gaming-flatpaks.txt" ;;
+        y ) install_flatpaks "gaming" "gaming-flatpaks.txt";;
         N ) ;;
         * ) ;;
     esac
