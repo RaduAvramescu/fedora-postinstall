@@ -1,6 +1,6 @@
 com.github.tchx84.Flatseal
 org.keepassxc.KeePassXC
-flathub org.mozilla.firefox
+org.mozilla.firefox
 org.libreoffice.LibreOffice
 com.vscodium.codium
 org.gimp.GIMP
