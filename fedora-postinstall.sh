@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Fedora Workstation postinstall script
 
-function handleBasicSettings() {
+function handle_basic_settings() {
     echo -ne "
 -------------------------------------------------------------------------
                     Handling basic settings
@@ -42,7 +42,7 @@ function handleBasicSettings() {
     done
 }
 
-function setupGit() {
+function setup_git() {
     echo -ne "
 -------------------------------------------------------------------------
                     Setting up git
@@ -59,19 +59,19 @@ function setupGit() {
     git config --global init.defaultBranch main
 }
 
-function promptGit() {
+function prompt_git() {
     if [ $(which git) ]; then
         read -p "Do you want to setup git? (y/N) " answer
 
         case $answer in 
-            y ) setupGit;;
+            y ) setup_git;;
             N ) ;;
             * ) ;;
         esac
     fi
 }
 
-function addRPMFusionRepos() {
+function add_rpm_fusion_repos() {
     echo -ne "
 -------------------------------------------------------------------------
                     Adding RPM non-free and free repos
@@ -81,7 +81,7 @@ function addRPMFusionRepos() {
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 }
 
-function installNvidiaDrivers() {
+function install_nvidia_drivers() {
     echo -ne "
 -------------------------------------------------------------------------
                     Installing Nvidia drivers
@@ -90,7 +90,7 @@ function installNvidiaDrivers() {
     sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 }
 
-function addFlathubRepo() {
+function add_flathub_repo() {
     echo -ne "
 -------------------------------------------------------------------------
                     Adding Flathub repo
@@ -100,7 +100,7 @@ function addFlathubRepo() {
     flatpak update -y
 }
 
-installFlatpaks() {
+function install_flatpaks() {
     echo -ne "
 -------------------------------------------------------------------------
                     Installing $1 flatpaks
@@ -117,17 +117,17 @@ installFlatpaks() {
     done
 }
 
-function handleGamingFlatpaks() {
+function handle_gaming_flatpaks() {
     read -p "Do you want to install gaming flatpaks? (y/N) " answer
 
     case $answer in 
-        y ) installFlatpaks "gaming" "gaming-flatpaks.txt" ;;
+        y ) install_flatpaks "gaming" "gaming-flatpaks.txt" ;;
         N ) ;;
         * ) ;;
     esac
 }
 
-function removeDefaultApps() {
+function remove_default_apps() {
     echo -ne "
 -------------------------------------------------------------------------
                     Removing unnecessary default apps
@@ -136,7 +136,7 @@ function removeDefaultApps() {
     sudo dnf remove -y totem
 }
 
-function setupFavoriteApps() {
+function setup_favorite_apps() {
     echo -ne "
 -------------------------------------------------------------------------
                     Setting up favorite apps
@@ -155,12 +155,12 @@ getFavoriteApps() {
     done
 }
 
-handleBasicSettings
-promptGit
-addRPMFusionRepos
-installNvidiaDrivers
-addFlathubRepo
-installFlatpaks "generic" "generic-flatpaks.txt"
-handleGamingFlatpaks
-removeDefaultApps
-setupFavoriteApps
+handle_basic_settings
+prompt_git
+add_rpm_fusion_repos
+install_nvidia_drivers
+add_flathub_repo
+install_flatpaks "generic" "generic-flatpaks.txt"
+handle_gaming_flatpaks
+remove_default_apps
+setup_favorite_apps
