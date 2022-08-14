@@ -40,8 +40,8 @@ for i in {1..9}; do
     gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>${i}']"
 done
 
-# Set default Git branch to main
-if [ $(which git) ]; then
+# Setup git
+setupGit() {
     echo -ne "
 -------------------------------------------------------------------------
                     Setting up git
@@ -56,6 +56,16 @@ if [ $(which git) ]; then
     git config --global --unset user.email
     git config --global user.email ${email}
     git config --global init.defaultBranch main
+}
+
+if [ $(which git) ]; then
+    read -p "Do you want to setup git? (y/N) " answer
+
+    case $answer in 
+        y ) setupGit;;
+        N ) ;;
+        * ) ;;
+    esac
 fi
 
 echo -ne "
@@ -83,10 +93,10 @@ flatpak update -y
 
 echo -ne "
 -------------------------------------------------------------------------
-                    Installing Flatpaks
+                    Installing generic flatpaks
 -------------------------------------------------------------------------
 "
-cat "./flatpaks.txt" | while read line
+cat "./generic-flatpaks.txt" | while read line
 do
 	if flatpak list | grep -q "${line}"; then
         echo "${line} is already installed"

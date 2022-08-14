@@ -1,0 +1,3 @@
+com.valvesoftware.Steam
+net.davidotek.pupgui2
+com.usebottles.bottles

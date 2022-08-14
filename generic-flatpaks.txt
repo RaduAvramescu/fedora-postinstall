@@ -5,9 +5,7 @@ org.libreoffice.LibreOffice
 com.vscodium.codium
 org.gimp.GIMP
 io.mpv.Mpv
-com.valvesoftware.Steam
-net.davidotek.pupgui2
 com.discordapp.Discord
 im.riot.Riot
 com.obsproject.Studio
-com.usebottles.bottles
+org.pipewire.Helvum
