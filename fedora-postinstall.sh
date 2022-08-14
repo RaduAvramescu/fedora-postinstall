@@ -1,47 +1,48 @@
 #!/usr/bin/env bash
 # Fedora Workstation postinstall script
 
-echo -ne "
+function handleBasicSettings() {
+    echo -ne "
 -------------------------------------------------------------------------
                     Handling basic settings
 -------------------------------------------------------------------------
 "
-# Remove mouse accel
-gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
+    # Remove mouse accel
+    gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
 
-# Setup dark theme
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    # Setup dark theme
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
-# Disable hot corners
-gsettings set org.gnome.desktop.interface enable-hot-corners false
+    # Disable hot corners
+    gsettings set org.gnome.desktop.interface enable-hot-corners false
 
-# Add terminal shortcut (Ctrl + Alt + T)
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Primary><Alt>t'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'gnome-terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+    # Add terminal shortcut (Ctrl + Alt + T)
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Primary><Alt>t'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'gnome-terminal'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
-# Remove dynamic workspaces
-gsettings set org.gnome.mutter dynamic-workspaces false
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
+    # Remove dynamic workspaces
+    gsettings set org.gnome.mutter dynamic-workspaces false
+    gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
 
-# Remove switch to application shortcuts
-for i in {1..9}; do
-    gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
-done
+    # Remove switch to application shortcuts
+    for i in {1..9}; do
+        gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
+    done
 
-# Add switch to workspace shortcuts
-for i in {1..9}; do
-    gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
-done
+    # Add switch to workspace shortcuts
+    for i in {1..9}; do
+        gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
+    done
 
-# Add move to workspace shortcuts
-for i in {1..9}; do
-    gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>${i}']"
-done
+    # Add move to workspace shortcuts
+    for i in {1..9}; do
+        gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>${i}']"
+    done
+}
 
-# Setup git
-setupGit() {
+function setupGit() {
     echo -ne "
 -------------------------------------------------------------------------
                     Setting up git
@@ -58,38 +59,46 @@ setupGit() {
     git config --global init.defaultBranch main
 }
 
-if [ $(which git) ]; then
-    read -p "Do you want to setup git? (y/N) " answer
+function promptGit() {
+    if [ $(which git) ]; then
+        read -p "Do you want to setup git? (y/N) " answer
 
-    case $answer in 
-        y ) setupGit;;
-        N ) ;;
-        * ) ;;
-    esac
-fi
+        case $answer in 
+            y ) setupGit;;
+            N ) ;;
+            * ) ;;
+        esac
+    fi
+}
 
-echo -ne "
+function addRPMFusionRepos() {
+    echo -ne "
 -------------------------------------------------------------------------
                     Adding RPM non-free and free repos
 -------------------------------------------------------------------------
 "
-sudo dnf upgrade -y
-sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf upgrade -y
+    sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+}
 
-echo -ne "
+function installNvidiaDrivers() {
+    echo -ne "
 -------------------------------------------------------------------------
                     Installing Nvidia drivers
 -------------------------------------------------------------------------
 "
-sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+    sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
+}
 
-echo -ne "
+function addFlathubRepo() {
+    echo -ne "
 -------------------------------------------------------------------------
                     Adding Flathub repo
 -------------------------------------------------------------------------
 "
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak update -y
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak update -y
+}
 
 installFlatpaks() {
     echo -ne "
@@ -108,28 +117,37 @@ installFlatpaks() {
     done
 }
 
-installFlatpaks "generic" "generic-flatpaks.txt"
+function handleGamingFlatpaks() {
+    read -p "Do you want to install gaming flatpaks? (y/N) " answer
 
-read -p "Do you want to install gaming flatpaks? (y/N) " answer
+    case $answer in 
+        y ) installFlatpaks "gaming" "gaming-flatpaks.txt" ;;
+        N ) ;;
+        * ) ;;
+    esac
+}
 
-case $answer in 
-    y ) installFlatpaks "gaming" "gaming-flatpaks.txt" ;;
-    N ) ;;
-    * ) ;;
-esac
-
-echo -ne "
+function removeDefaultApps() {
+    echo -ne "
 -------------------------------------------------------------------------
                     Removing unnecessary default apps
 -------------------------------------------------------------------------
 "
-sudo dnf remove -y totem
+    sudo dnf remove -y totem
+}
 
-echo -ne "
+function setupFavoriteApps() {
+    echo -ne "
 -------------------------------------------------------------------------
                     Setting up favorite apps
 -------------------------------------------------------------------------
 "
+    favorite_apps="$(getFavoriteApps)"
+    favorite_apps="[${favorite_apps:2:${#favorite_apps}}]"
+
+    gsettings set org.gnome.shell favorite-apps "$favorite_apps"
+}
+
 getFavoriteApps() {
     cat "./favorite-apps.txt" | while read line
     do
@@ -137,7 +155,12 @@ getFavoriteApps() {
     done
 }
 
-favorite_apps="$(getFavoriteApps)"
-favorite_apps="[${favorite_apps:2:${#favorite_apps}}]"
-
-gsettings set org.gnome.shell favorite-apps "$favorite_apps"
+handleBasicSettings
+promptGit
+addRPMFusionRepos
+installNvidiaDrivers
+addFlathubRepo
+installFlatpaks "generic" "generic-flatpaks.txt"
+handleGamingFlatpaks
+removeDefaultApps
+setupFavoriteApps
