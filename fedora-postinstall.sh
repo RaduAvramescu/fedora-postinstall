@@ -16,6 +16,9 @@ function handle_basic_settings() {
     # Disable hot corners
     gsettings set org.gnome.desktop.interface enable-hot-corners false
 
+    # Add toggle fullscreen shortcut
+    gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
+
     # Add terminal shortcut (Ctrl + Alt + T)
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Primary><Alt>t'
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
@@ -28,17 +31,17 @@ function handle_basic_settings() {
 
     # Remove switch to application shortcuts
     for i in {1..9}; do
-        gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
+        gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
     done
 
     # Add switch to workspace shortcuts
     for i in {1..9}; do
-        gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
+        gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
     done
 
     # Add move to workspace shortcuts
     for i in {1..9}; do
-        gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>${i}']"
+        gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>${i}']"
     done
 }
 
