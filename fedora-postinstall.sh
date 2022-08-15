@@ -127,6 +127,10 @@ function handle_gaming_flatpaks() {
     esac
 }
 
+function install_terminal() {
+    sudo dnf install -y alacritty fira-code-fonts
+}
+
 function remove_default_apps() {
     echo -ne "
 -------------------------------------------------------------------------
@@ -162,5 +166,6 @@ install_nvidia_drivers
 add_flathub_repo
 install_flatpaks "generic" "generic-flatpaks.txt"
 handle_gaming_flatpaks
+install_terminal
 remove_default_apps
 setup_favorite_apps
