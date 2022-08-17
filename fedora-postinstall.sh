@@ -136,7 +136,20 @@ function install_terminal() {
                     Installing terminal
 -------------------------------------------------------------------------
 "
-    sudo dnf install -y alacritty fira-code-fonts
+    sudo dnf install -y alacritty zsh 
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    # Point to /bin/zsh for example, if using zsh
+    sudo lchsh $USER
+    mkdir -p ~/Repos
+    mkdir -p /usr/share/fonts/fira-code
+    dir=$(pwd)
+    cd /usr/share/fonts/fira-code && sudo curl -fLo "Fira Code Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Bold/complete/Fira%20Code%20Bold%20Nerd%20Font%20Complete.ttf
+    sudo curl -fLo "Fira Code Retina Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf
+    sudo curl -fLo "Fira Code Regular Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf
+    sudo curl -fLo "Fira Code Medium Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf
+    sudo curl -fLo "Fira Code SemiBold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/SemiBold/complete/Fira%20Code%20SemiBold%20Nerd%20Font%20Complete.ttf
+    sudo curl -fLo "Fira Code Light Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Light/complete/Fira%20Code%20Light%20Nerd%20Font%20Complete.ttf
+    cd $dir
 }
 
 function remove_default_apps() {
