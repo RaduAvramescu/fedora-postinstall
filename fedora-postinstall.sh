@@ -136,7 +136,7 @@ function install_terminal() {
                     Installing terminal
 -------------------------------------------------------------------------
 "
-    sudo dnf install -y alacritty zsh zsh-syntax-highlighting
+    sudo dnf install -y alacritty zsh zsh-syntax-highlighting sqlite
     # Point to /bin/zsh for example, if using zsh
     sudo lchsh $USER
     mkdir -p ~/Repos
