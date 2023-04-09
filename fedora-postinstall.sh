@@ -100,6 +100,7 @@ function add_flathub_repo() {
 -------------------------------------------------------------------------
 "
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak remote-modify --enable flathub
     flatpak update -y
 }
 
