@@ -181,10 +181,16 @@ getFavoriteApps() {
     done
 }
 
+gpu_type=$(lspci)
+
 handle_basic_settings
 prompt_git
 add_rpm_fusion_repos
-install_nvidia_drivers
+
+if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
+    install_nvidia_drivers
+fi
+
 add_flathub_repo
 install_flatpaks "generic" "generic-flatpaks.txt"
 handle_gaming_flatpaks
