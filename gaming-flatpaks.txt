@@ -1,3 +1,4 @@
 com.valvesoftware.Steam
 net.davidotek.pupgui2
 com.usebottles.bottles
+org.freedesktop.Platform.VulkanLayer.MangoHud
