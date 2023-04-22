@@ -144,6 +144,14 @@ function install_terminal() {
     sudo mkdir -p /usr/share/fonts/fira-code
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+}
+
+function install_fonts() {
+    echo -ne "
+-------------------------------------------------------------------------
+                    Installing fonts
+-------------------------------------------------------------------------
+"
     dir=$(pwd)
     cd /usr/share/fonts/fira-code
     sudo curl -fLo "Fira Code Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Bold/complete/Fira%20Code%20Bold%20Nerd%20Font%20Complete.ttf
@@ -197,5 +205,6 @@ add_flathub_repo
 install_flatpaks "generic" "generic-flatpaks.txt"
 handle_gaming_flatpaks
 install_terminal
+install_fonts
 remove_default_apps
 setup_favorite_apps
