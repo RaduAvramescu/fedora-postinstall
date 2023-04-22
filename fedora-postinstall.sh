@@ -141,7 +141,6 @@ function install_terminal() {
     # Point to /bin/zsh for example, if using zsh
     sudo lchsh $USER
     mkdir -p ~/Repos
-    sudo mkdir -p /usr/share/fonts/fira-code
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 }
@@ -153,6 +152,7 @@ function install_fonts() {
 -------------------------------------------------------------------------
 "
     dir=$(pwd)
+    sudo mkdir -p /usr/share/fonts/fira-code
     cd /usr/share/fonts/fira-code
     sudo curl -fLo "Fira Code Bold Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Bold/complete/Fira%20Code%20Bold%20Nerd%20Font%20Complete.ttf
     sudo curl -fLo "Fira Code Retina Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf
