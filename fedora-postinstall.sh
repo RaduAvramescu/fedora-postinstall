@@ -43,6 +43,9 @@ function handle_basic_settings() {
     for i in {1..9}; do
         gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>${i}']"
     done
+
+    # Make folder where all repos are stored
+    mkdir -p ~/Repos
 }
 
 function setup_git() {
@@ -140,7 +143,6 @@ function install_terminal() {
     sudo dnf install -y alacritty zsh zsh-syntax-highlighting sqlite
     # Point to /bin/zsh for example, if using zsh
     sudo lchsh $USER
-    mkdir -p ~/Repos
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 }
