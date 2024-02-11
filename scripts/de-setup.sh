@@ -28,18 +28,10 @@ function handle_gnome_settings() {
     gsettings set org.gnome.mutter dynamic-workspaces false
     gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
 
-    # Remove switch to application shortcuts
+    # Remove switch to application shortcuts and add switch/move to workspace shortcuts
     for i in {1..9}; do
         gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
-    done
-
-    # Add switch to workspace shortcuts
-    for i in {1..9}; do
         gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
-    done
-
-    # Add move to workspace shortcuts
-    for i in {1..9}; do
         gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>${i}']"
     done
 }
