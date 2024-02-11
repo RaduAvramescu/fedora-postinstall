@@ -147,6 +147,16 @@ function install_terminal() {
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 }
 
+function install_tmux() {
+    echo -ne "
+-------------------------------------------------------------------------
+                    Installing tmux
+-------------------------------------------------------------------------
+"
+    sudo dnf install -y tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
 function install_fonts() (
     echo -ne "
 -------------------------------------------------------------------------
@@ -207,6 +217,7 @@ add_flathub_repo
 install_flatpaks "generic" "generic-flatpaks.txt"
 handle_gaming_flatpaks
 install_terminal
+install_tmux
 install_fonts
 remove_default_apps
 setup_favorite_apps
