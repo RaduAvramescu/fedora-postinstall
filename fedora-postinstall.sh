@@ -122,6 +122,7 @@ gpu_type=$(lspci)
 
 # Make folder where all repos are stored
 mkdir -p ~/Repos
+chmod u+x ./de-setup.sh
 ./de-setup.sh
 prompt_git
 add_rpm_fusion_repos
@@ -130,6 +131,7 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 fi
 
+chmod u+x ./flatpak-setup.sh
 ./flatpak-setup.sh
 install_terminal
 install_tmux
