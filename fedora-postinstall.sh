@@ -71,7 +71,7 @@ function setup_favorite_apps() {
 }
 
 getFavoriteApps() {
-    cat "./favorite-apps.txt" | while read line
+    cat "./data/favorite-apps.txt" | while read line
     do
         echo -n ", '${line}'"
     done

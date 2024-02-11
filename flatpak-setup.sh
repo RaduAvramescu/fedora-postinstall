@@ -30,12 +30,12 @@ function handle_gaming_flatpaks() {
     read -p "Do you want to install gaming flatpaks? (y/N) " answer
 
     case $answer in 
-        y ) install_flatpaks "gaming" "gaming-flatpaks.txt";;
+        y ) install_flatpaks "gaming" "data/gaming-flatpaks.txt";;
         N ) ;;
         * ) ;;
     esac
 }
 
 add_flathub_repo
-install_flatpaks "generic" "generic-flatpaks.txt"
+install_flatpaks "generic" "data/generic-flatpaks.txt"
 handle_gaming_flatpaks
