@@ -44,4 +44,6 @@ function handle_gnome_settings() {
     done
 }
 
-handle_gnome_settings
+if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; then
+    handle_gnome_settings
+fi

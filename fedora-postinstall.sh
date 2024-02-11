@@ -158,12 +158,9 @@ getFavoriteApps() {
 
 gpu_type=$(lspci)
 
-if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; then
-    ./desktop-environment.sh
-fi
-
 # Make folder where all repos are stored
 mkdir -p ~/Repos
+./de-setup.sh
 prompt_git
 add_rpm_fusion_repos
 
