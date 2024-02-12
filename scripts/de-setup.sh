@@ -6,6 +6,9 @@ function handle_gnome_settings() {
                     Handling GNOME settings
 -------------------------------------------------------------------------
 "
+    # Disable automatic updates
+    gsettings set org.gnome.software download-updates false
+
     # Remove mouse accel
     gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
 
