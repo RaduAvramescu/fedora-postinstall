@@ -33,11 +33,21 @@ function prompt_git() {
 function add_rpm_fusion_repos() {
     echo -ne "
 -------------------------------------------------------------------------
-                    Adding RPM non-free and free repos
+                    Adding RPM free and nonfree repos
 -------------------------------------------------------------------------
 "
     sudo dnf upgrade -y
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+}
+
+function prompt_rpm_fusion_repos() {
+    read -p "Do you want to add RPM Fusion Free and Nonfree repos? (y/N) " answer
+
+    case $answer in 
+        y ) add_rpm_fusion_repos;;
+        N ) ;;
+        * ) ;;
+    esac
 }
 
 function install_nvidia_drivers() {
@@ -84,7 +94,7 @@ mkdir -p ~/Repos
 chmod u+x ./de-setup.sh
 ./de-setup.sh
 prompt_git
-add_rpm_fusion_repos
+prompt_rpm_fusion_repos
 
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
