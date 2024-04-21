@@ -70,31 +70,10 @@ function remove_default_apps() {
     sudo dnf remove -y totem
 }
 
-function setup_favorite_apps() {
-    echo -ne "
--------------------------------------------------------------------------
-                    Setting up favorite apps
--------------------------------------------------------------------------
-"
-    favorite_apps="$(getFavoriteApps)"
-    favorite_apps="[${favorite_apps:2:${#favorite_apps}}]"
-
-    gsettings set org.gnome.shell favorite-apps "$favorite_apps"
-}
-
-getFavoriteApps() {
-    cat "../data/favorite-apps.txt" | while read line
-    do
-        echo -n ", '${line}'"
-    done
-}
-
 gpu_type=$(lspci)
 
 # Make folder where all repos are stored
 mkdir -p ~/Repos
-chmod u+x ./de-setup.sh
-./de-setup.sh
 prompt_git
 prompt_rpm_fusion_repos
 
@@ -102,9 +81,10 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 fi
 
+remove_default_apps
 chmod u+x ./flatpak-setup.sh
 ./flatpak-setup.sh
 chmod u+x ./terminal-setup.sh
 ./terminal-setup.sh
-remove_default_apps
-setup_favorite_apps
+chmod u+x ./de-setup.sh
+./de-setup.sh
