@@ -61,7 +61,7 @@ function install_nvidia_drivers() {
     sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda
 }
 
-function remove_default_apps() {
+function remove_default_pkgs() {
     echo -ne "
 -------------------------------------------------------------------------
                     Removing unnecessary default apps
@@ -81,7 +81,7 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 fi
 
-remove_default_apps
+remove_default_pkgs
 chmod u+x ./flatpak-setup.sh
 ./flatpak-setup.sh
 chmod u+x ./terminal-setup.sh
