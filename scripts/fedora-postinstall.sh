@@ -64,10 +64,11 @@ function install_nvidia_drivers() {
 function remove_default_pkgs() {
     echo -ne "
 -------------------------------------------------------------------------
-                    Removing unnecessary default apps
+                    Removing unnecessary default packages
 -------------------------------------------------------------------------
 "
-    sudo dnf remove -y totem
+    sudo dnf group remove libreoffice
+    sudo dnf remove -y totem firefox "libreoffice*" dragon konsole
 }
 
 gpu_type=$(lspci)
