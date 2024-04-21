@@ -56,6 +56,20 @@ getFavoriteApps() {
     done
 }
 
+function handle_kde_settings() {
+    echo -ne "
+-------------------------------------------------------------------------
+                    Handling KDE settings
+-------------------------------------------------------------------------
+"
+    # Set adaptive sync to automatic
+    kscreen-doctor output.1.vrrpolicy.automatic
+}
+
 if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; then
     handle_gnome_settings
+fi
+
+if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; then
+    handle_kde_settings
 fi
