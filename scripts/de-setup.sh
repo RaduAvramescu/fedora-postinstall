@@ -70,6 +70,6 @@ if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; t
     handle_gnome_settings
 fi
 
-if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; then
+if [ $XDG_SESSION_DESKTOP == "kde" ] || [ $XDG_SESSION_DESKTOP == "KDE" ]; then
     handle_kde_settings
 fi
