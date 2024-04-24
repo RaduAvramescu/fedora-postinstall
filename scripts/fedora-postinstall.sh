@@ -68,7 +68,10 @@ function remove_default_pkgs() {
 -------------------------------------------------------------------------
 "
     sudo dnf group remove libreoffice
-    sudo dnf remove -y totem firefox "libreoffice*" dragon konsole
+    sudo dnf remove -y totem firefox "libreoffice*"
+
+    # Remove KDE native apps
+    sudo dnf remove -y dragon konsole "akonadi*" neochat kmahjongg kmines kpat kolourpaint okular skanpage kwrite kfind kmousetool gwenview kcharselect kmouth "kwallet*"
 }
 
 gpu_type=$(lspci)
