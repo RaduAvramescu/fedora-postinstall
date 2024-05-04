@@ -36,7 +36,6 @@ function add_rpm_fusion_repos() {
                     Adding RPM free and nonfree repos
 -------------------------------------------------------------------------
 "
-    sudo dnf upgrade -y
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     chmod u+x ./rpm-setup.sh
     ./rpm-setup.sh
@@ -75,6 +74,9 @@ function remove_default_pkgs() {
 }
 
 gpu_type=$(lspci)
+
+# Update all packages before doing the rest of the setup
+sudo dnf upgrade -y --refresh
 
 # Make folder where all repos are stored
 mkdir -p ~/Repos
