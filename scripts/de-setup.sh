@@ -84,7 +84,15 @@ function install_hyprland() {
 -------------------------------------------------------------------------
 "
 
-    sudo dnf install -y hyprland waybar
+    sudo dnf install -y hyprland waybar sddm network-manager-applet
+
+    # Enable sddm to run on boot and start immediately
+    sudo systemctl enable sddm
+    sudo systemctl start sddm
+
+    # Install swaync from copr
+    sudo dnf copr enable erikreider/SwayNotificationCenter
+    sudo dnf install -y SwayNotificationCenter
 
     # Remove unnecessary packages installed as dependencies
     sudo dnf remove -i kitty
