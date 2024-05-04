@@ -8,4 +8,5 @@ io.mpv.Mpv
 com.discordapp.Discord
 im.riot.Riot
 com.obsproject.Studio
+com.obsproject.Studio.Plugin.OBSVkCapture
 org.pipewire.Helvum
