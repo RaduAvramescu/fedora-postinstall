@@ -77,6 +77,21 @@ function handle_hyprland_settings() {
 "
 }
 
+function install_hyprland() {
+    echo -ne "
+-------------------------------------------------------------------------
+                    Installing Hyprland
+-------------------------------------------------------------------------
+"
+
+    sudo dnf install -y hyprland waybar
+
+    # Remove unnecessary packages installed as dependencies
+    sudo dnf remove -i kitty
+
+    handle_hyprland_settings
+}
+
 case $XDG_SESSION_DESKTOP in
     gnome | GNOME)
         handle_gnome_settings
@@ -95,7 +110,7 @@ case $XDG_SESSION_DESKTOP in
         read -p "Do you want to install Hyprland? (y/N) " answer
 
         case $answer in 
-            y ) handle_hyprland_settings;;
+            y ) install_hyprland;;
             N ) ;;
             * ) ;;
         esac
