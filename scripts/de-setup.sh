@@ -97,6 +97,10 @@ function install_hyprland() {
     # Remove unnecessary packages installed as dependencies
     sudo dnf remove -y kitty
 
+    # Fix xdg user dirs
+    sudo dnf install -y xdg-user-dirs
+    xdg-user-dirs-update
+
     handle_hyprland_settings
 }
 
