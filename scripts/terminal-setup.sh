@@ -5,12 +5,14 @@ function install_terminal() {
 -------------------------------------------------------------------------
 "
     sudo dnf install -y alacritty zsh zsh-syntax-highlighting sqlite
-    
+
     # Point to /bin/zsh for example, if using zsh
     if [ $(which chsh) ]; then
         chsh -s /bin/zsh
     elif [ $(which lchsh) ]; then
         sudo lchsh $USER
+    else
+        echo "Failed to change shell!"
     fi
 
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
