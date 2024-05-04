@@ -69,10 +69,35 @@ function handle_kde_settings() {
     kscreen-doctor output.1.vrrpolicy.automatic
 }
 
-if [ $XDG_SESSION_DESKTOP == "gnome" ] || [ $XDG_SESSION_DESKTOP == "GNOME" ]; then
-    handle_gnome_settings
-fi
+function handle_hyprland_settings() {
+    echo -ne "
+-------------------------------------------------------------------------
+                    Handling Hyprland settings
+-------------------------------------------------------------------------
+"
+}
 
-if [ $XDG_SESSION_DESKTOP == "kde" ] || [ $XDG_SESSION_DESKTOP == "KDE" ]; then
-    handle_kde_settings
-fi
+case $XDG_SESSION_DESKTOP in
+    gnome | GNOME)
+        handle_gnome_settings
+        ;;
+
+    kde | KDE)
+        handle_kde_settings
+        ;;
+
+    hyprland | Hyprland)
+        handle_hyprland_settings
+        ;;
+
+    *)
+        echo "Unknown DE!"
+        read -p "Do you want to install Hyprland? (y/N) " answer
+
+        case $answer in 
+            y ) handle_hyprland_settings;;
+            N ) ;;
+            * ) ;;
+        esac
+        ;;
+esac
