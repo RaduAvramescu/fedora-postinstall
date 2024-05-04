@@ -9,6 +9,6 @@ Type the following commands in a terminal:
 ```
 git clone https://github.com/RaduAvramescu/fedora-postinstall.git
 cd fedora-postinstall/scripts
-chmod u+x ./fedora-postinstall.sh
-./fedora-postinstall.sh
+chmod u+x ./00-fedora-postinstall.sh
+./00-fedora-postinstall.sh
 ```
