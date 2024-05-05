@@ -93,10 +93,10 @@ function setup_sddm() (
     mkdir -p /etc/sddm.conf.d/
 
     # Clone theme
-    git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
+    git clone https://github.com/RaduAvramescu/sddm-tokyo-night-theme /usr/share/sddm/themes/sddm-tokyo-night-theme
 
     # Set sddm theme
-    echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | tee /etc/sddm.conf.d/10-theme.conf
+    echo -e "[Theme]\nCurrent=sddm-tokyo-night-theme" | tee /etc/sddm.conf.d/10-theme.conf
 )
 
 function install_hyprland() {
