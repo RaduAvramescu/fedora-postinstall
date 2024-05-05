@@ -77,6 +77,30 @@ function handle_hyprland_settings() {
 "
 }
 
+function setup_sddm() (
+    sudo -s
+
+    # Enable sddm to run on boot and start immediately
+    systemctl set-default graphical.target
+    systemctl enable sddm
+    systemctl start sddm
+
+    # Install theme dependencies
+    dnf install -y qt5ct qt6ct qt6-qt5compat qt6-qtdeclarative qt6-qtsvg
+
+    # Create all sddm folders if they don't exist
+    mkdir -p /usr/share/sddm/themes
+    mkdir -p /etc/sddm.conf.d/
+
+    # Clone theme and move it to themes folder
+    git clone https://github.com/rototrash/tokyo-night-sddm.git ~/tokyo-night-sddm
+    mv ~/tokyo-night-sddm /usr/share/sddm/themes/
+
+    # Set sddm theme
+    touch /etc/sddm.conf.d/10-theme.conf
+    echo -e "[Theme]\nCurrent=tokyo-night-sddm" >> /etc/sddm.conf.d/10-theme.conf
+)
+
 function install_hyprland() {
     echo -ne "
 -------------------------------------------------------------------------
@@ -86,10 +110,7 @@ function install_hyprland() {
 
     sudo dnf install -y hyprland waybar sddm network-manager-applet
 
-    # Enable sddm to run on boot and start immediately
-    sudo systemctl set-default graphical.target
-    sudo systemctl enable sddm
-    sudo systemctl start sddm
+    setup_sddm
 
     # Install swaync from copr
     sudo dnf copr enable erikreider/SwayNotificationCenter
