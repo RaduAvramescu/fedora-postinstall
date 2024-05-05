@@ -87,6 +87,7 @@ function install_hyprland() {
     sudo dnf install -y hyprland waybar sddm network-manager-applet
 
     # Enable sddm to run on boot and start immediately
+    sudo systemctl set-default graphical.target
     sudo systemctl enable sddm
     sudo systemctl start sddm
 
