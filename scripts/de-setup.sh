@@ -121,6 +121,12 @@ function install_hyprland() {
     sudo dnf install -y xdg-user-dirs
     xdg-user-dirs-update
 
+    # Fix audio routing (for example, for GoXLR Mini)
+    sudo dnf install -y alsa-ucm
+
+    # Install audio device volume control utility
+    sudo dnf install -y pavucontrol
+
     handle_hyprland_settings
 }
 
