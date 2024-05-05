@@ -108,8 +108,6 @@ function install_hyprland() {
 
     sudo dnf install -y hyprland waybar sddm network-manager-applet
 
-    setup_sddm
-
     # Install swaync from copr
     sudo dnf copr enable erikreider/SwayNotificationCenter
     sudo dnf install -y SwayNotificationCenter
@@ -117,16 +115,14 @@ function install_hyprland() {
     # Remove unnecessary packages installed as dependencies
     sudo dnf remove -y kitty
 
-    # Fix xdg user dirs
-    sudo dnf install -y xdg-user-dirs
+    # Install additional packages
+    cat "../data/hyprland-rpms.txt" | while read line
+    do
+        sudo dnf install -y "${line}"
+    done
+    
     xdg-user-dirs-update
-
-    # Fix audio routing (for example, for GoXLR Mini)
-    sudo dnf install -y alsa-ucm
-
-    # Install audio device volume control utility
-    sudo dnf install -y pavucontrol
-
+    setup_sddm
     handle_hyprland_settings
 }
 

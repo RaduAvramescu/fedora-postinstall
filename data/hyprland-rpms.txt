@@ -1,0 +1,10 @@
+hyprland
+waybar
+sddm
+network-manager-applet
+gvfs-mtp
+alsa-ucm
+pavucontrol
+pamixer
+openssl
+xdg-user-dirs
