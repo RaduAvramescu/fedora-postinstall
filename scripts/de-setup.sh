@@ -86,19 +86,17 @@ function setup_sddm() (
     systemctl start sddm
 
     # Install theme dependencies
-    dnf install -y qt5ct qt6ct qt6-qt5compat qt6-qtdeclarative qt6-qtsvg
+    dnf install -y qt6-qt5compat qt6-qtdeclarative qt6-qtsvg
 
     # Create all sddm folders if they don't exist
     mkdir -p /usr/share/sddm/themes
     mkdir -p /etc/sddm.conf.d/
 
-    # Clone theme and move it to themes folder
-    git clone https://github.com/rototrash/tokyo-night-sddm.git ~/tokyo-night-sddm
-    mv ~/tokyo-night-sddm /usr/share/sddm/themes/
+    # Clone theme
+    git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
 
     # Set sddm theme
-    touch /etc/sddm.conf.d/10-theme.conf
-    echo -e "[Theme]\nCurrent=tokyo-night-sddm" >> /etc/sddm.conf.d/10-theme.conf
+    echo -e "[Theme]\nCurrent=sddm-astronaut-theme" | tee /etc/sddm.conf.d/10-theme.conf
 )
 
 function install_hyprland() {
