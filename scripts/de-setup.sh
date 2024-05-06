@@ -106,7 +106,11 @@ function install_hyprland() {
 -------------------------------------------------------------------------
 "
 
-    sudo dnf install -y hyprland waybar sddm network-manager-applet
+    # Install Hyprland specific packages
+    cat "../data/hyprland-rpms.txt" | while read line
+    do
+        sudo dnf install -y "${line}"
+    done
 
     # Install swaync from copr
     sudo dnf copr enable erikreider/SwayNotificationCenter
@@ -115,12 +119,6 @@ function install_hyprland() {
     # Remove unnecessary packages installed as dependencies
     sudo dnf remove -y kitty
 
-    # Install additional packages
-    cat "../data/hyprland-rpms.txt" | while read line
-    do
-        sudo dnf install -y "${line}"
-    done
-    
     xdg-user-dirs-update
     setup_sddm
     handle_hyprland_settings
