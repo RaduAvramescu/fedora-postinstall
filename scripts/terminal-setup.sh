@@ -25,6 +25,10 @@ function install_tmux() {
                     Installing tmux
 -------------------------------------------------------------------------
 "
+    # Install tmux dependencies
+    sudo dnf install -y google-noto-sans-symbols2-fonts
+
+    # Install tmux
     sudo dnf install -y tmux
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
