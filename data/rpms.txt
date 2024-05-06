@@ -1,4 +1,3 @@
-flatpak
 mangohud
 steam
 imv

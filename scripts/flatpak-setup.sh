@@ -36,6 +36,7 @@ function handle_gaming_flatpaks() {
     esac
 }
 
+sudo dnf install -y flatpak
 add_flathub_repo
 install_flatpaks "generic" "../data/generic-flatpaks.txt"
 handle_gaming_flatpaks
