@@ -75,8 +75,12 @@ function handle_hyprland_settings() {
                     Handling Hyprland settings
 -------------------------------------------------------------------------
 "
-
     # Setup themes
+    sudo flatpak override --filesystem=$HOME/.themes
+    sudo flatpak override --filesystem=$HOME/.icons
+    sudo flatpak override --user --filesystem=xdg-config/gtk-4.0
+    sudo flatpak override --filesystem=xdg-config/gtk-4.0
+    
     gsettings set org.gnome.desktop.interface icon-theme 'Tokyonight-Dark'
     gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-BL-LB'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
@@ -110,7 +114,6 @@ function install_hyprland() {
                     Installing Hyprland
 -------------------------------------------------------------------------
 "
-
     # Install Hyprland specific packages
     cat "../data/hyprland-rpms.txt" | while read line
     do
