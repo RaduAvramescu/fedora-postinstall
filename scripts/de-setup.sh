@@ -75,6 +75,11 @@ function handle_hyprland_settings() {
                     Handling Hyprland settings
 -------------------------------------------------------------------------
 "
+
+    # Setup themes
+    gsettings set org.gnome.desktop.interface icon-theme 'Tokyonight-Dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-BL-LB'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }
 
 function setup_sddm() (
