@@ -1,6 +1,7 @@
 hyprland
 waybar
 sddm
+gtk-murrine-engine
 network-manager-applet
 gvfs-mtp
 alsa-ucm
