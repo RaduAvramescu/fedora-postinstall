@@ -69,22 +69,42 @@ function handle_kde_settings() {
     kscreen-doctor output.1.vrrpolicy.automatic
 }
 
-function handle_hyprland_settings() {
+function handle_hyprland_settings() (
     echo -ne "
 -------------------------------------------------------------------------
                     Handling Hyprland settings
 -------------------------------------------------------------------------
 "
     # Setup themes
-    sudo flatpak override --filesystem=$HOME/.themes
-    sudo flatpak override --filesystem=$HOME/.icons
-    sudo flatpak override --user --filesystem=xdg-config/gtk-4.0
-    sudo flatpak override --filesystem=xdg-config/gtk-4.0
+    mkdir -p ~/.icons
+    mkdir -p ~/.config/gtk-4.0
+
+    cd ../themes
+    unzip 01-Tokyonight-Dark-B.zip -d 01-Tokyonight-Dark-B
+    cd 01-Tokyonight-Dark-B/
+    cp -rf Tokyonight-Dark-B ~/.themes/Tokyonight-Dark-B
+
+    cd ~/Repos
+    sudo rm -rf Tokyo-Night-GTK-Theme
+    git clone https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
+    cd Tokyo-Night-GTK-Theme
+    cp -rf icons/Tokyonight-Dark ~/.icons/Tokyonight-Dark
+    cd ..
+    sudo rm -rf Tokyo-Night-GTK-Theme
     
+    ln -s ~/.themes/Tokyonight-Dark-B/gtk-4.0/assets ~/.config/gtk-4.0/assets
+    ln -s ~/.themes/Tokyonight-Dark-B/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
+    ln -s ~/.themes/Tokyonight-Dark-B/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+
+    sudo flatpak override --filesystem=~/.themes
+    sudo flatpak override --filesystem=~/.icons
+    flatpak override --user --filesystem=xdg-config/gtk-4.0
+    sudo flatpak override --filesystem=xdg-config/gtk-4.0
+
     gsettings set org.gnome.desktop.interface icon-theme 'Tokyonight-Dark'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-BL-LB'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-B'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-}
+)
 
 function setup_sddm() (
     sudo -s
@@ -132,27 +152,4 @@ function install_hyprland() {
     handle_hyprland_settings
 }
 
-case $XDG_SESSION_DESKTOP in
-    gnome | GNOME)
-        handle_gnome_settings
-        ;;
-
-    kde | KDE)
-        handle_kde_settings
-        ;;
-
-    hyprland | Hyprland)
-        handle_hyprland_settings
-        ;;
-
-    *)
-        echo "Unknown DE!"
-        read -p "Do you want to install Hyprland? (y/N) " answer
-
-        case $answer in 
-            y ) install_hyprland;;
-            N ) ;;
-            * ) ;;
-        esac
-        ;;
-esac
+handle_hyprland_settings
