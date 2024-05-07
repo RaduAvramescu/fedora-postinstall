@@ -2,6 +2,7 @@ hyprland
 waybar
 sddm
 gtk-murrine-engine
+gnome-themes-extra
 network-manager-applet
 gvfs-mtp
 alsa-ucm
