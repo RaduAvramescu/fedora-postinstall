@@ -3,6 +3,7 @@ waybar
 sddm
 gtk-murrine-engine
 gnome-themes-extra
+dejavu-sans-fonts
 network-manager-applet
 gvfs-mtp
 alsa-ucm
