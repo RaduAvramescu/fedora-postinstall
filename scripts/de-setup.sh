@@ -140,6 +140,10 @@ function install_hyprland() {
         sudo dnf install -y "${line}"
     done
 
+    # Update Hyprland packages from copr
+    sudo dnf copr enable solopasha/hyprland
+    sudo dnf upgrade -y --refresh
+
     # Install swaync from copr
     sudo dnf copr enable erikreider/SwayNotificationCenter
     sudo dnf install -y SwayNotificationCenter
