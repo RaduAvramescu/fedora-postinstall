@@ -1,6 +1,8 @@
 hyprland
 waybar
 sddm
+kvantum
+qt6ct
 gtk-murrine-engine
 gnome-themes-extra
 dejavu-sans-fonts
