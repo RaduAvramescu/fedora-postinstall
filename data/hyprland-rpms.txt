@@ -4,12 +4,12 @@ sddm
 kvantum
 qt6ct
 gtk-murrine-engine
-gnome-themes-extra
 dejavu-sans-fonts
 network-manager-applet
 gvfs-mtp
 alsa-ucm
 pavucontrol
 pamixer
+wlogout
 openssl
 xdg-user-dirs
