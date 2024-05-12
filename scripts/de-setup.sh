@@ -96,6 +96,10 @@ function handle_hyprland_settings() (
     cp -rf Tokyonight-Dark-B ~/.themes/Tokyonight-Dark-B
     sudo cp -rf Tokyonight-Dark-B /usr/share/themes/Tokyonight-Dark-B
 
+    # Copy wallpaper
+    cd ../wallpapers
+    cp tokyocity.png ~/Pictures
+
     # Copy icon theme
     cd ~/Repos
     sudo rm -rf Tokyo-Night-GTK-Theme
