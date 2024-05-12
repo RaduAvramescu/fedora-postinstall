@@ -9,6 +9,7 @@ fontawesome-6-brands-fonts
 dejavu-sans-fonts
 network-manager-applet
 blueman
+htop
 gvfs-mtp
 alsa-ucm
 pavucontrol
