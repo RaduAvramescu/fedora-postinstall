@@ -80,15 +80,31 @@ function handle_hyprland_settings() (
     mkdir -p ~/.config/gtk-4.0
 
     cd ../themes
+
+    # Copy cursor theme
+    tar -xvf Simp1e-Tokyo-Night.tar.xz
+    mkdir -p ~/.icons/Simp1e-Tokyo-Night
+    sudo mkdir -p /usr/share/icons/Simp1e-Tokyo-Night
+    cp -rf Simp1e-Tokyo-Night ~/.icons/Simp1e-Tokyo-Night
+    sudo cp -rf Simp1e-Tokyo-Night /usr/share/icons/Simp1e-Tokyo-Night
+
+    # Copy general theme
     unzip 01-Tokyonight-Dark-B.zip -d 01-Tokyonight-Dark-B
     cd 01-Tokyonight-Dark-B/
+    mkdir -p ~/.themes/Tokyonight-Dark-B
+    sudo mkdir -p /usr/share/themes/Tokyonight-Dark-B
     cp -rf Tokyonight-Dark-B ~/.themes/Tokyonight-Dark-B
+    sudo cp -rf Tokyonight-Dark-B /usr/share/themes/Tokyonight-Dark-B
 
+    # Copy icon theme
     cd ~/Repos
     sudo rm -rf Tokyo-Night-GTK-Theme
     git clone https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
     cd Tokyo-Night-GTK-Theme
-    cp -rf icons/Tokyonight-Dark ~/.icons/Tokyonight-Dark
+    mkdir -p ~/.icons/Tokyonight-Dark
+    sudo mkdir -p /usr/share/icons/Tokyonight-Dark
+    cp -rf Tokyonight-Dark ~/.icons/Tokyonight-Dark
+    sudo cp -rf Tokyonight-Dark /usr/share/icons/Tokyonight-Dark
     cd ..
     sudo rm -rf Tokyo-Night-GTK-Theme
     
@@ -98,12 +114,15 @@ function handle_hyprland_settings() (
 
     sudo flatpak override --filesystem=~/.themes
     sudo flatpak override --filesystem=~/.icons
+    flatpak override --filesystem=~/.themes:ro --filesystem=~/.icons:ro --user
     flatpak override --user --filesystem=xdg-config/gtk-4.0
     sudo flatpak override --filesystem=xdg-config/gtk-4.0
 
     gsettings set org.gnome.desktop.interface icon-theme 'Tokyonight-Dark'
     gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-B'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Tokyo-Night'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font, 11'
 )
 
 function setup_sddm() (
