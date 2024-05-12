@@ -1,6 +1,7 @@
 hyprland
 waybar
 sddm
+swaybg
 kvantum
 qt6ct
 gtk-murrine-engine
