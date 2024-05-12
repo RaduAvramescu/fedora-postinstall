@@ -114,9 +114,12 @@ function handle_hyprland_settings() (
 
     sudo flatpak override --filesystem=~/.themes
     sudo flatpak override --filesystem=~/.icons
-    flatpak override --filesystem=~/.themes:ro --filesystem=~/.icons:ro --user
-    flatpak override --user --filesystem=xdg-config/gtk-4.0
-    sudo flatpak override --filesystem=xdg-config/gtk-4.0
+    flatpak override --user --env=XCURSOR_PATH=~/.icons
+    flatpak override --user --filesystem=~/.themes:ro --filesystem=~/.icons:ro
+    flatpak override --user --filesystem=~/.icons:ro --filesystem=/usr/share/icons/:ro
+    flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
+    flatpak override --user --filesystem=xdg-config/gtk-4.0:ro
+    sudo flatpak override --filesystem=xdg-config/gtk-4.0:ro
 
     gsettings set org.gnome.desktop.interface icon-theme 'Tokyonight-Dark'
     gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-B'
