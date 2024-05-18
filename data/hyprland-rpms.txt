@@ -2,6 +2,7 @@ hyprland
 waybar
 sddm
 swaybg
+polkit-gnome
 kvantum
 qt6ct
 gtk-murrine-engine
