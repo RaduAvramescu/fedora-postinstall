@@ -10,6 +10,7 @@ fontawesome-6-free-fonts
 fontawesome-6-brands-fonts
 dejavu-sans-fonts
 network-manager-applet
+NetworkManager-wifi
 blueman
 htop
 gvfs-mtp
