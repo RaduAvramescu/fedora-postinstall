@@ -4,19 +4,22 @@ function install_terminal() {
                     Installing terminal
 -------------------------------------------------------------------------
 "
-    sudo dnf install -y alacritty zsh zsh-syntax-highlighting sqlite
+    sudo dnf install -y alacritty fish
+
+    # Install tide
+    set -l _tide_tmp_dir (command mktemp -d)
+    curl https://codeload.github.com/ilancosman/tide/tar.gz/v6 | tar -xzC $_tide_tmp_dir
+    command cp -R $_tide_tmp_dir/*/{completions,conf.d,functions} $__fish_config_dir
+    fish_path=(status fish-path) exec $fish_path -C "emit _tide_init_install"
 
     # Point to /bin/zsh for example, if using zsh
     if [ $(which chsh) ]; then
-        chsh -s /bin/zsh
+        chsh -s /bin/fish
     elif [ $(which lchsh) ]; then
         sudo lchsh $USER
     else
         echo "Failed to change shell!"
     fi
-
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 }
 
 function install_tmux() {
