@@ -175,7 +175,7 @@ function install_hyprland() {
     sudo dnf install -y SwayNotificationCenter
 
     # Remove unnecessary packages installed as dependencies
-    sudo dnf remove -y kitty
+    sudo dnf remove -y kitty wofi
 
     xdg-user-dirs-update
     setup_sddm
