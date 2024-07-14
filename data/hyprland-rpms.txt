@@ -2,6 +2,7 @@ hyprland
 waybar
 sddm
 swaybg
+rofi-wayland
 hypridle
 hyprlock
 polkit-gnome
