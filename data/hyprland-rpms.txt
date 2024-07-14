@@ -17,6 +17,7 @@ google-noto-serif-cjk-vf-fonts
 network-manager-applet
 NetworkManager-wifi
 blueman
+udiskie
 htop
 gvfs-mtp
 alsa-ucm
