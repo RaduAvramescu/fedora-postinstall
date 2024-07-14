@@ -2,6 +2,8 @@ hyprland
 waybar
 sddm
 swaybg
+hypridle
+hyprlock
 polkit-gnome
 kvantum
 qt6ct
