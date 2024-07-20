@@ -23,6 +23,5 @@ gvfs-mtp
 alsa-ucm
 pavucontrol
 pamixer
-wlogout
 openssl
 xdg-user-dirs
