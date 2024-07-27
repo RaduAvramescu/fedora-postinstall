@@ -20,10 +20,6 @@ function install_rpms() {
         sudo dnf install -y "${line}"
     done
 
-    # Install obs-vkcapture from copr repo
-    sudo dnf copr enable kylegospo/obs-vkcapture
-    sudo dnf install -y obs-vkcapture.x86_64 obs-vkcapture.i686
-
     # Install mesa-git from copr repo
     sudo dnf copr enable xxmitsu/mesa-git
     sudo dnf upgrade -y --refresh
