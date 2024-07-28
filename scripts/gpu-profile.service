@@ -1,0 +1,9 @@
+[Unit]
+Description = "Apply custom GPU fan curve/power limit"
+
+[Service]
+ExecStart=/usr/bin/bash /root/.local/bin/gpu-profile.sh
+Type=idle
+
+[Install]
+WantedBy=multi-user.target
