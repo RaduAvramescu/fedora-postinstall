@@ -1,0 +1,9 @@
+[Unit]
+Description = "Handle GoXLR Utility initialization"
+
+[Service]
+ExecStart=/usr/bin/goxlr-daemon
+Type=idle
+
+[Install]
+WantedBy=default.target
