@@ -74,6 +74,7 @@ function remove_default_pkgs() {
 }
 
 gpu_type=$(lspci)
+usb_devices=$(lsusb)
 
 # Update all packages before doing the rest of the setup
 sudo dnf upgrade -y --refresh
@@ -83,11 +84,18 @@ mkdir -p ~/Repos
 prompt_git
 prompt_rpm_fusion_repos
 
+# Handle GPU setup
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 elif grep -E "7900 XTX" <<< ${gpu_type}; then
     chmod u+x ./setup-gpu-profile.sh
     ./setup-gpu-profile.sh
+fi
+
+# Handle GoXLR daemon service
+if grep -E "GoXLRMini" <<< ${usb_devices}; then
+    chmod u+x ./goxlr-setup.sh
+    ./goxlr-setup.sh
 fi
 
 remove_default_pkgs
