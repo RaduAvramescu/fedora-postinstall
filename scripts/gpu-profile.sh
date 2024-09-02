@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-if [[ "$USER" != "root" ]]; then
+if ! [ $(id -u) = 0 ]; then
     echo "Script needs to run as root!"
     exit 1
 fi
