@@ -35,13 +35,13 @@ function install_fonts() (
                     Installing fonts
 -------------------------------------------------------------------------
 "
-    font_dir="/usr/share/fonts/NerdFonts"
-    sudo mkdir -p "${font_dir}"
-    cd "${font_dir}"
+    FONT_DIR=~/.local/share/fonts/NerdFonts
+    sudo mkdir -p "${FONT_DIR}"
+    cd "${FONT_DIR}"
     sudo curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
     sudo unzip JetBrainsMono.zip
     sudo rm -rf JetBrainsMono.zip
-    fc-cache -f "${font_dir}"
+    fc-cache -f "${FONT_DIR}"
 )
 
 install_terminal
