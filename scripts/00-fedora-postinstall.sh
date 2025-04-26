@@ -92,12 +92,6 @@ elif grep -E "7900 XTX" <<< ${gpu_type}; then
     ./setup-gpu-profile.sh
 fi
 
-# Handle GoXLR daemon service
-if grep -E "GoXLRMini" <<< ${usb_devices}; then
-    chmod u+x ./goxlr-setup.sh
-    ./goxlr-setup.sh
-fi
-
 remove_default_pkgs
 chmod u+x ./flatpak-setup.sh
 ./flatpak-setup.sh

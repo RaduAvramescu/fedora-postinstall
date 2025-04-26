@@ -1,9 +1,0 @@
-[Unit]
-Description=Handle GoXLR Utility initialization
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/goxlr-daemon
-
-[Install]
-WantedBy=default.target
