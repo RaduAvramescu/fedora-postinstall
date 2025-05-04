@@ -8,6 +8,9 @@ function install_terminal() {
 
     # Install starship
     curl -sS https://starship.rs/install.sh | sh
+
+    # Run the command below (in fish) in order to set the Starship config location:
+    # set -Ux STARSHIP_CONFIG ~/.config/starship/starship.toml
 }
 
 function install_tmux() {
