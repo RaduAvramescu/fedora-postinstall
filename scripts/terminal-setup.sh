@@ -4,26 +4,15 @@ function install_terminal() {
                     Installing terminal
 -------------------------------------------------------------------------
 "
-    sudo dnf install -y alacritty fish
+    sudo dnf install -y alacritty
 
-    # Install starship
-    curl -sS https://starship.rs/install.sh | sh
+    # Install homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+    # Install all terminal related homebrew packages
+    brew install fish starship tmux
 
-    # Run the command below (in fish) in order to set the Starship config location:
-    # set -Ux STARSHIP_CONFIG ~/.config/starship/starship.toml
-}
-
-function install_tmux() {
-    echo -ne "
--------------------------------------------------------------------------
-                    Installing tmux
--------------------------------------------------------------------------
-"
-    # Install tmux dependencies
-    sudo dnf install -y google-noto-sans-symbols2-fonts
-
-    # Install tmux
-    sudo dnf install -y tmux
+    # Install tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
@@ -43,5 +32,4 @@ function install_fonts() (
 )
 
 install_terminal
-install_tmux
 install_fonts
