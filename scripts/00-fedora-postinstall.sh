@@ -16,6 +16,12 @@ function setup_git() {
     git config --global --unset user.email
     git config --global user.email ${email}
     git config --global init.defaultBranch main
+
+    # Setup commit signing
+    git config --global "gpg.ssh.defaultKeyCommand" "ssh-add -L"
+    git config --global gpg.format ssh
+    git config --global commit.gpgsign true
+    git config --global format.signoff true
 }
 
 function prompt_git() {
