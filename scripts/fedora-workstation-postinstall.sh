@@ -9,8 +9,8 @@ function add_rpm_fusion_repos() {
 -------------------------------------------------------------------------
 "
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-    chmod u+x ./generic/rpm-prompt.sh
-    ./generic/rpm-prompt.sh
+    chmod u+x ./generic/prompt-rpm.sh
+    ./generic/prompt-rpm.sh
 }
 
 function prompt_rpm_fusion_repos() {
@@ -55,8 +55,8 @@ sudo dnf upgrade -y --refresh
 mkdir -p ~/Repos
 
 # Setup git
-chmod u+x ./generic/git-setup.sh
-./generic/git-setup.sh
+chmod u+x ./generic/setup-git.sh
+./generic/setup-git.sh
 
 prompt_rpm_fusion_repos
 
@@ -67,27 +67,27 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
 remove_default_pkgs
 
 # Setup flatpaks
-chmod u+x ./generic/flathub-setup.sh
-./generic/flathub-setup.sh
-chmod u+x ./generic/flatpaks-install.sh
-./generic/flatpaks-install.sh "flatpaks" "./data/flatpaks.txt"
+chmod u+x ./generic/setup-flathub.sh
+./generic/setup-flathub.sh
+chmod u+x ./generic/install-flatpaks.sh
+./generic/install-flatpaks.sh "flatpaks" "./data/flatpaks.txt"
 
 # Setup terminal
-chmod u+x ./generic/terminal-install.sh
-./generic/terminal-install.sh
-chmod u+x ./generic/fonts-install.sh
-./generic/fonts-install.sh
+chmod u+x ./generic/install-terminal.sh
+./generic/install-terminal.sh
+chmod u+x ./generic/install-fonts.sh
+./generic/install-fonts.sh
 
 # Setup desktop environment
 case $XDG_SESSION_DESKTOP in
     gnome | GNOME)
-        chmod u+x ./generic/gnome-setup.sh
-        ./generic/gnome-setup.sh
+        chmod u+x ./generic/setup-gnome.sh
+        ./generic/setup-gnome.sh
         ;;
 
     kde | KDE)
-        chmod u+x ./generic/kde-setup.sh
-        ./generic/kde-setup.sh
+        chmod u+x ./generic/setup-kde.sh
+        ./generic/setup-kde.sh
         ;;
 
     *)
