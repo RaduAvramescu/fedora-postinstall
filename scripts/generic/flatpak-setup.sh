@@ -1,42 +1,10 @@
-function add_flathub_repo() {
-    echo -ne "
--------------------------------------------------------------------------
-                    Adding Flathub repo
--------------------------------------------------------------------------
-"
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    flatpak remote-modify --enable flathub
-    flatpak update -y
-}
+#!/usr/bin/env bash
 
-function install_flatpaks() {
-    echo -ne "
--------------------------------------------------------------------------
-                    Installing $1 flatpaks
--------------------------------------------------------------------------
-"
+chmod u+x ./flathub-setup.sh
+./flathub-setup.sh
 
-    cat "$2" | while read line
-    do
-        if flatpak list | grep -q "${line}"; then
-            echo "${line} is already installed"
-        else
-            flatpak install flathub -y --noninteractive "${line}"
-        fi
-    done
-}
+chmod u+x ./flatpaks-install.sh
+./flatpaks-install.sh "generic" "../data/generic-flatpaks.txt"
 
-function handle_gaming_flatpaks() {
-    read -p "Do you want to install gaming flatpaks? (y/N) " answer
-
-    case $answer in 
-        y ) install_flatpaks "gaming" "../data/gaming-flatpaks.txt";;
-        N ) ;;
-        * ) ;;
-    esac
-}
-
-sudo dnf install -y flatpak
-add_flathub_repo
-install_flatpaks "generic" "../data/generic-flatpaks.txt"
-handle_gaming_flatpaks
+chmod u+x ./gaming-flatpaks.sh
+./gaming-flatpaks.sh

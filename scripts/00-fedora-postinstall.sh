@@ -96,8 +96,8 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
 
 remove_default_pkgs
 chmod u+x ./generic/flatpak-setup.sh
-./flatpak-setup.sh
+./generic/flatpak-setup.sh
 chmod u+x ./generic/terminal-setup.sh
-./terminal-setup.sh
+./generic/terminal-setup.sh
 chmod u+x ./generic/de-setup.sh
-./de-setup.sh
+./generic/de-setup.sh
