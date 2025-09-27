@@ -87,10 +87,6 @@ prompt_rpm_fusion_repos
 # Handle GPU setup
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
-elif grep -E "7900 XTX" <<< ${gpu_type}; then
-    chmod u+x ./setup-gpu-profile.sh
-    ./setup-gpu-profile.sh
-fi
 
 remove_default_pkgs
 chmod u+x ./flatpak-setup.sh
