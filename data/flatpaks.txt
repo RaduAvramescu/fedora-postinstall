@@ -3,7 +3,6 @@ org.keepassxc.KeePassXC
 org.mozilla.firefox
 org.mozilla.Thunderbird
 org.libreoffice.LibreOffice
-com.vscodium.codium
 org.gimp.GIMP
 io.mpv.Mpv
 com.discordapp.Discord
@@ -11,3 +10,5 @@ im.riot.Riot
 com.obsproject.Studio
 org.pipewire.Helvum
 net.davidotek.pupgui2
+org.deskflow.deskflow
+com.mikrotik.WinBox
