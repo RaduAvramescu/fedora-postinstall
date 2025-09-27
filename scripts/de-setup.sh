@@ -37,23 +37,6 @@ function handle_gnome_settings() {
         gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
         gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>${i}']"
     done
-
-    # Setup favorite apps that appear in the dock
-    setup_favorite_apps
-}
-
-function setup_favorite_apps() {
-    favorite_apps="$(get_favorite_apps)"
-    favorite_apps="[${favorite_apps:2:${#favorite_apps}}]"
-
-    gsettings set org.gnome.shell favorite-apps "$favorite_apps"
-}
-
-get_favorite_apps() {
-    cat "../data/favorite-apps.txt" | while read line
-    do
-        echo -n ", '${line}'"
-    done
 }
 
 function handle_kde_settings() {
