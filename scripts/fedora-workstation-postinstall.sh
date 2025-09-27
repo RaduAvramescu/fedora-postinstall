@@ -9,8 +9,8 @@ function add_rpm_fusion_repos() {
 -------------------------------------------------------------------------
 "
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-    chmod u+x ./generic/rpm-setup.sh
-    ./generic/rpm-setup.sh
+    chmod u+x ./generic/rpm-prompt.sh
+    ./generic/rpm-prompt.sh
 }
 
 function prompt_rpm_fusion_repos() {
