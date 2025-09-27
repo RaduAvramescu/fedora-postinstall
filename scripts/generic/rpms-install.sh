@@ -11,10 +11,6 @@ function install_rpms() {
     do
         sudo dnf install -y "${line}"
     done
-
-    # Install mesa-git from copr repo
-    sudo dnf copr enable xxmitsu/mesa-git
-    sudo dnf upgrade -y --refresh
 }
 
 install_rpms
