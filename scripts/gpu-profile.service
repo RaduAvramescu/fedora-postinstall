@@ -1,9 +1,0 @@
-[Unit]
-Description=Apply custom GPU fan curve/power limit
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/gpu-profile.sh
-
-[Install]
-WantedBy=multi-user.target
