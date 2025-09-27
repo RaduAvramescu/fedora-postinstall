@@ -95,9 +95,29 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 
 remove_default_pkgs
-chmod u+x ./generic/flatpak-setup.sh
-./generic/flatpak-setup.sh
+
+# Setup flatpaks
+chmod u+x ./generic/flathub-setup.sh
+./generic/flathub-setup.sh
+chmod u+x ./generic/flatpaks-install.sh
+./generic/flatpaks-install.sh "flatpaks" "./data/flatpaks.txt"
+
+# Setup terminal
 chmod u+x ./generic/terminal-setup.sh
 ./generic/terminal-setup.sh
-chmod u+x ./generic/de-setup.sh
-./generic/de-setup.sh
+
+# Setup desktop environment
+case $XDG_SESSION_DESKTOP in
+    gnome | GNOME)
+        chmod u+x ./generic/gnome-setup.sh
+        ./generic/gnome-setup.sh
+        ;;
+
+    kde | KDE)
+        chmod u+x ./generic/kde-setup.sh
+        ./generic/kde-setup.sh
+        ;;
+
+    *)
+        echo "Unknown DE!"
+esac
