@@ -10,3 +10,4 @@ com.discordapp.Discord
 im.riot.Riot
 com.obsproject.Studio
 org.pipewire.Helvum
+net.davidotek.pupgui2

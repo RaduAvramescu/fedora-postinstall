@@ -1,40 +1,6 @@
 #!/usr/bin/env bash
 # Fedora Workstation postinstall script
 
-function setup_git() {
-    echo -ne "
--------------------------------------------------------------------------
-                    Setting up git
--------------------------------------------------------------------------
-"
-    echo "Name: "
-    read name
-    git config --global --unset user.name
-    git config --global user.name ${name}
-    echo "Email Address: "
-    read email
-    git config --global --unset user.email
-    git config --global user.email ${email}
-    git config --global init.defaultBranch main
-
-    # Setup commit signing
-    git config --global "gpg.ssh.defaultKeyCommand" "ssh-add -L"
-    git config --global gpg.format ssh
-    git config --global commit.gpgsign true
-    git config --global format.signoff true
-}
-
-function prompt_git() {
-    if [ $(which git) ]; then
-        read -p "Do you want to setup git? (y/N) " answer
-
-        case $answer in 
-            y ) setup_git;;
-            N ) ;;
-            * ) ;;
-        esac
-    fi
-}
 
 function add_rpm_fusion_repos() {
     echo -ne "
@@ -43,8 +9,8 @@ function add_rpm_fusion_repos() {
 -------------------------------------------------------------------------
 "
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-    chmod u+x ./rpm-setup.sh
-    ./rpm-setup.sh
+    chmod u+x ./generic/prompt-rpm.sh
+    ./generic/prompt-rpm.sh
 }
 
 function prompt_rpm_fusion_repos() {
@@ -87,7 +53,11 @@ sudo dnf upgrade -y --refresh
 
 # Make folder where all repos are stored
 mkdir -p ~/Repos
-prompt_git
+
+# Setup git
+chmod u+x ./generic/setup-git.sh
+./generic/setup-git.sh
+
 prompt_rpm_fusion_repos
 
 # Handle GPU setup
@@ -95,9 +65,31 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 
 remove_default_pkgs
-chmod u+x ./flatpak-setup.sh
-./flatpak-setup.sh
-chmod u+x ./terminal-setup.sh
-./terminal-setup.sh
-chmod u+x ./de-setup.sh
-./de-setup.sh
+
+# Setup flatpaks
+chmod u+x ./generic/setup-flathub.sh
+./generic/setup-flathub.sh
+chmod u+x ./generic/install-flatpaks.sh
+./generic/install-flatpaks.sh "flatpaks" "./data/flatpaks.txt"
+
+# Setup terminal
+chmod u+x ./generic/install-terminal.sh
+./generic/install-terminal.sh
+chmod u+x ./generic/install-fonts.sh
+./generic/install-fonts.sh
+
+# Setup desktop environment
+case $XDG_SESSION_DESKTOP in
+    gnome | GNOME)
+        chmod u+x ./generic/setup-gnome.sh
+        ./generic/setup-gnome.sh
+        ;;
+
+    kde | KDE)
+        chmod u+x ./generic/setup-kde.sh
+        ./generic/setup-kde.sh
+        ;;
+
+    *)
+        echo "Unknown DE!"
+esac
