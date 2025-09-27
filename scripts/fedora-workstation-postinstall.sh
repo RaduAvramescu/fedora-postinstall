@@ -73,8 +73,10 @@ chmod u+x ./generic/flatpaks-install.sh
 ./generic/flatpaks-install.sh "flatpaks" "./data/flatpaks.txt"
 
 # Setup terminal
-chmod u+x ./generic/terminal-setup.sh
-./generic/terminal-setup.sh
+chmod u+x ./generic/terminal-install.sh
+./generic/terminal-install.sh
+chmod u+x ./generic/fonts-install.sh
+./generic/fonts-install.sh
 
 # Setup desktop environment
 case $XDG_SESSION_DESKTOP in
