@@ -43,8 +43,8 @@ function add_rpm_fusion_repos() {
 -------------------------------------------------------------------------
 "
     sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-    chmod u+x ./rpm-setup.sh
-    ./rpm-setup.sh
+    chmod u+x ./generic/rpm-setup.sh
+    ./generic/rpm-setup.sh
 }
 
 function prompt_rpm_fusion_repos() {
@@ -95,9 +95,9 @@ if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 
 remove_default_pkgs
-chmod u+x ./flatpak-setup.sh
+chmod u+x ./generic/flatpak-setup.sh
 ./flatpak-setup.sh
-chmod u+x ./terminal-setup.sh
+chmod u+x ./generic/terminal-setup.sh
 ./terminal-setup.sh
-chmod u+x ./de-setup.sh
+chmod u+x ./generic/de-setup.sh
 ./de-setup.sh
