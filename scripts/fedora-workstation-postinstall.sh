@@ -64,6 +64,12 @@ prompt_rpm_fusion_repos
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
     install_nvidia_drivers
 
+# Handle GoXLR daemon service
+if grep -E "GoXLRMini" <<< ${usb_devices}; then
+    chmod u+x ./generic/goxlr-setup.sh
+    ./goxlr-setup.sh
+fi
+
 remove_default_pkgs
 
 # Setup flatpaks
