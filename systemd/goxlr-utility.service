@@ -4,8 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=distrobox enter utils -- goxlr-daemon
-ExecStop=distrobox stop --yes utils
+ExecStart=distrobox enter goxlr-utility -- goxlr-daemon
 Restart=on-failure
 RestartSec=5
 
