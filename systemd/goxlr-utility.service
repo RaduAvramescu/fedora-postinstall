@@ -1,12 +1,13 @@
 [Unit]
 Description=Handle GoXLR Utility initialization
-After=default.target
+After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=distrobox enter fedora -- goxlr-daemon
-Restart=on-failure
-RestartSec=3
+ExecStart=distrobox enter utils -- goxlr-daemon
+ExecStop=distrobox stop --yes utils
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=default.target
