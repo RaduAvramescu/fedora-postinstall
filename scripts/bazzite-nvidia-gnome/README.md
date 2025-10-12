@@ -59,18 +59,21 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 ## Application Configuration
 
 34. Setup Discord
-35. Setup LACT
-36. Set OC in LACT
+35. Setup LACT:
+    - Enable GPU Locked Clocks checked
+    - Maximum GPU Clock: 3000
+    - GPU P-State 0 Clock Offset: 400
+    - VRAM P-State 0 Clock Offset: 2000
 
 ## GoXLR Setup
 
-37. Download GoXLR config
-38. Run `distrobox-assemble create` in distrobox folder for goxlr-utility:
+36. Download GoXLR config
+37. Run `distrobox-assemble create` in distrobox folder for goxlr-utility:
     ```
     distrobox-assemble create fedora-postinstall/distrobox/goxlr-utility
     ```
-39. Launch GoXLR Utility
-40. Fix GoXLR profiles
+38. Launch GoXLR Utility
+39. Fix GoXLR profiles
 
 ## Usage
 
