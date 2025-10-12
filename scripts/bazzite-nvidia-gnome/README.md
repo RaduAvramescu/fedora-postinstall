@@ -23,21 +23,24 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 11. Setup Firefox
 12. Setup ublock medium mode
 
+## Application Installation
+
+13. Install flatpaks: KeePassXC, Proton Plus, OBS Studio, Thunderbird, GIMP, mpv, Discord, Element, Deskflow, WinBox, LACT
+14. Run `brew install stow starship`
+
 ## Development Tools
 
-13. Run `brew analytics off`
-14. Login to Github
-15. Setup git from repo script:
+15. Run `brew analytics off`
+16. Login to Github
+17. Setup git from repo script:
     ```
     git clone https://github.com/RaduAvramescu/fedora-postinstall.git
     chmod u+x fedora-postinstall/scripts/generic/setup-git.sh
     fedora-postinstall/scripts/generic/setup-git.sh
     ```
-16. Clone dotfiles repo
-17. Run `brew install stow`
-18. From keepassxc move github keys to .ssh
-19. stow mpv and mangohud configs
-20. Install starship via brew
+18. Clone dotfiles repo
+19. From keepassxc move github keys to .ssh
+20. stow mpv and mangohud configs
 21. Add user to docker group
 
 ## Desktop Environment
@@ -51,46 +54,32 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 24. Change font to JetBrainsMono Nerd Font in Ptyxis
 25. Set font to 12px in terminal
 
-## Applications - Flatpaks
-
-26. Install keepassxc flatpak
-27. Install Proton Plus flatpak
-28. Install OBS Studio flatpak
-29. Install thunderbird flatpak
-30. Install gimp flatpak
-31. Install mpv flatpak
-32. Install discord flatpak
-33. Install element flatpak
-34. Install deskflow flatpak
-35. Install winbox flatpak
-36. Install lact flatpak
-
 ## Gaming Setup - Steam
 
-37. Login to Steam
-38. Enable GPU acceleration in Steam
-39. Disable "Run Steam when computer starts"
-40. Enable low bandwidth and low performance modes in Steam
-41. Disable community content in Steam
-42. Disable shader pre-caching
-43. Set Proton-GE as default in Steam
-44. Install games
+26. Login to Steam
+27. Enable GPU acceleration in Steam
+28. Disable "Run Steam when computer starts"
+29. Enable low bandwidth and low performance modes in Steam
+30. Disable community content in Steam
+31. Disable shader pre-caching
+32. Set Proton-GE as default in Steam
+33. Install games
 
 ## Application Configuration
 
-45. Setup Discord
-46. Setup LACT
-47. Set OC in LACT
+34. Setup Discord
+35. Setup LACT
+36. Set OC in LACT
 
 ## GoXLR Setup
 
-48. Download GoXLR config
-49. Run `distrobox-assemble create` in distrobox folder for goxlr-utility:
+37. Download GoXLR config
+38. Run `distrobox-assemble create` in distrobox folder for goxlr-utility:
     ```
     distrobox-assemble create fedora-postinstall/distrobox/goxlr-utility
     ```
-50. Launch GoXLR Utility
-51. Fix GoXLR profiles
+39. Launch GoXLR Utility
+40. Fix GoXLR profiles
 
 ## Usage
 
