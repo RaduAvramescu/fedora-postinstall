@@ -39,7 +39,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
     fedora-postinstall/scripts/generic/setup-git.sh
     ```
 18. Clone dotfiles repo
-19. From keepassxc move github keys to .ssh
+19. From KeePassXC move GitHub keys to ~/.ssh
 20. stow mpv and mangohud configs
 21. Add user to docker group
 
