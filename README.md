@@ -6,6 +6,7 @@ This repository contains my personal post-installation scripts and configuration
 
 - **scripts/** - Post-installation scripts for different distributions
   - **fedora-workstation/** - Fedora Workstation setup script
+  - **bazzite-nvidia-gnome/** - Bazzite Nvidia GNOME setup guide and script
   - **generic/** - Reusable scripts for common tasks (flatpak installation, RPM installation, Git setup, GNOME/KDE configuration, fonts, terminal setup, etc.)
 - **distrobox/** - Distrobox configurations for containerized environments
 - **data/** - Data files including flatpak and RPM package lists
