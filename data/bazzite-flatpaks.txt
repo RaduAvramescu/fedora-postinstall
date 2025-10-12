@@ -1,11 +1,11 @@
 org.keepassxc.KeePassXC
-net.davidotek.pupgui2
+com.vysp3r.ProtonPlus
 com.obsproject.Studio
 org.mozilla.Thunderbird
 org.gimp.GIMP
 io.mpv.Mpv
 com.discordapp.Discord
 im.riot.Riot
-com.github.d3sox.deskflow
-com.github.rradar.winbox
-io.github.lact-linux.lact
+org.deskflow.deskflow
+com.mikrotik.WinBox
+io.github.ilya_zlobintsev.LACT
