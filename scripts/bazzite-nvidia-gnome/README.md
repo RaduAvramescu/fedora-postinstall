@@ -31,28 +31,19 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 ## Development Tools
 
 15. Run `brew analytics off`
-16. Login to Github
-17. Setup git from repo script:
-    ```
-    git clone https://github.com/RaduAvramescu/fedora-postinstall.git
-    chmod u+x fedora-postinstall/scripts/generic/setup-git.sh
-    fedora-postinstall/scripts/generic/setup-git.sh
-    ```
+16. Login to GitHub
+17. Setup git from repo script (automated by postinstall script - see Usage section)
 18. Clone dotfiles repo
 19. From KeePassXC move GitHub keys to ~/.ssh
 20. stow mpv and mangohud configs
 21. Add user to docker group
+22. Change Ptyxis profile to fish
+23. Change font to JetBrainsMono Nerd Font in Ptyxis
+24. Set font to 12px in terminal
 
 ## Desktop Environment
 
-22. Setup GNOME DE from repo script:
-    ```
-    chmod u+x fedora-postinstall/scripts/generic/setup-gnome.sh
-    fedora-postinstall/scripts/generic/setup-gnome.sh
-    ```
-23. Change Ptyxis profile to fish
-24. Change font to JetBrainsMono Nerd Font in Ptyxis
-25. Set font to 12px in terminal
+25. Setup GNOME DE from repo script (automated by postinstall script - see Usage section)
 
 ## Gaming Setup - Steam
 
