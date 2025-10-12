@@ -49,12 +49,12 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 26. Login to Steam
 27. Configure Steam settings:
-    - Enable GPU acceleration
-    - Disable "Run Steam when computer starts"
-    - Enable low bandwidth mode
-    - Enable low performance mode
-    - Disable community content
-    - Disable shader pre-caching
+    - Disable "Run Steam when my computer starts"
+    - Enable "GPU accelerated rendering in web views" (requires restart)
+    - Enable "Low Bandwidth Mode"
+    - Enable "Low Performance Mode"
+    - Enable "Disable Community Content"
+    - Disable "Enable Shader Pre-caching"
     - Set GE-Proton as default compatibility tool
 28. Install games
 
