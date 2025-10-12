@@ -1,14 +1,20 @@
-# Fedora Postinstall Script
+# Fedora and Bazzite Post-Installation Scripts
 
-This is my personal script which I use immediately after I install Fedora Workstation. It does basic setup, and handles the installation of all the apps I use.
+This repository contains my personal post-installation scripts and configurations for Fedora and Bazzite systems. It includes automated setup scripts, generic utilities, distrobox configurations, flatpak lists, and systemd services.
+
+## Contents
+
+- **scripts/** - Post-installation scripts for different distributions
+  - **fedora-workstation/** - Fedora Workstation setup script
+  - **generic/** - Reusable scripts for common tasks (flatpak installation, RPM installation, Git setup, GNOME/KDE configuration, fonts, terminal setup, etc.)
+- **distrobox/** - Distrobox configurations for containerized environments
+- **data/** - Data files including flatpak and RPM package lists
+- **systemd/** - Systemd service unit files
 
 ## Usage
 
-Type the following commands in a terminal:
+Navigate to the specific subdirectory for detailed instructions on using each script or configuration.
 
-```
-git clone https://github.com/RaduAvramescu/fedora-postinstall.git
-cd fedora-postinstall/scripts
-chmod u+x ./fedora-workstation-postinstall.sh
-./fedora-workstation-postinstall.sh
-```
+## Contributing
+
+This is a personal configuration repository, but feel free to fork and adapt it for your own needs.
