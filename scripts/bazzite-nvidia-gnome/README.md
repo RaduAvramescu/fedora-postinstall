@@ -25,18 +25,18 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 ## Application Installation
 
-13. Install flatpaks: KeePassXC, Proton Plus, OBS Studio, Thunderbird, GIMP, mpv, Discord, Element, Deskflow, WinBox, LACT
-14. Run `brew install stow starship`
+13. Install flatpaks: KeePassXC, Proton Plus, OBS Studio, Thunderbird, GIMP, mpv, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
+14. Run `brew install stow starship` (automated by postinstall script - see Usage section)
 
 ## Development Tools
 
-15. Run `brew analytics off`
+15. Run `brew analytics off` (automated by postinstall script - see Usage section)
 16. Login to GitHub
 17. Setup git from repo script (automated by postinstall script - see Usage section)
 18. Clone dotfiles repo
 19. From KeePassXC move GitHub keys to ~/.ssh
 20. stow mpv and mangohud configs
-21. Add user to docker group
+21. Add user to docker group (automated by postinstall script - see Usage section)
 22. Change Ptyxis profile to fish
 23. Change font to JetBrainsMono Nerd Font in Ptyxis
 24. Set font to 12px in terminal
@@ -79,7 +79,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 ## Usage
 
-You can run the automated script for git and GNOME setup:
+You can run the automated script to install applications, setup git, configure GNOME, and add user to docker group:
 
 ```
 git clone https://github.com/RaduAvramescu/fedora-postinstall.git
@@ -87,4 +87,4 @@ chmod u+x fedora-postinstall/scripts/bazzite-nvidia-gnome/bazzite-nvidia-gnome-p
 fedora-postinstall/scripts/bazzite-nvidia-gnome/bazzite-nvidia-gnome-postinstall.sh
 ```
 
-Most steps require manual configuration and are documented above.
+The script will automate flatpak installation, Homebrew package installation, git setup, GNOME configuration, and docker group setup. Most other steps require manual configuration and are documented above.
