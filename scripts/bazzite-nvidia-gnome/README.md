@@ -48,18 +48,20 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 ## Gaming Setup - Steam
 
 26. Login to Steam
-27. Enable GPU acceleration in Steam
-28. Disable "Run Steam when computer starts"
-29. Enable low bandwidth and low performance modes in Steam
-30. Disable community content in Steam
-31. Disable shader pre-caching
-32. Set Proton-GE as default in Steam
-33. Install games
+27. Configure Steam settings:
+    - Enable GPU acceleration
+    - Disable "Run Steam when computer starts"
+    - Enable low bandwidth mode
+    - Enable low performance mode
+    - Disable community content
+    - Disable shader pre-caching
+    - Set GE-Proton as default compatibility tool
+28. Install games
 
 ## Application Configuration
 
-34. Setup Discord
-35. Setup LACT:
+29. Setup Discord
+30. Setup LACT:
     - Enable GPU Locked Clocks checked
     - Maximum GPU Clock: 3000
     - GPU P-State 0 Clock Offset: 400
@@ -67,13 +69,13 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 ## GoXLR Setup
 
-36. Download GoXLR config
-37. Run `distrobox-assemble create` in distrobox folder for goxlr-utility:
+31. Download GoXLR config
+32. Run `distrobox-assemble create` in distrobox folder for goxlr-utility:
     ```
     distrobox-assemble create fedora-postinstall/distrobox/goxlr-utility
     ```
-38. Launch GoXLR Utility
-39. Fix GoXLR profiles
+33. Launch GoXLR Utility
+34. Fix GoXLR profiles
 
 ## Usage
 
