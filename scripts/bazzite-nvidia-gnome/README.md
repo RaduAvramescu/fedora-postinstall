@@ -25,7 +25,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 ## Application Installation
 
-13. Install flatpaks: KeePassXC, Proton Plus, OBS Studio, Thunderbird, GIMP, mpv, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
+13. Install flatpaks: KeePassXC, ProtonPlus, OBS Studio, Thunderbird, GIMP, mpv, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
 14. Run `brew install stow starship` (automated by postinstall script - see Usage section)
 
 ## Development Tools
@@ -33,13 +33,13 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 15. Run `brew analytics off` (automated by postinstall script - see Usage section)
 16. Login to GitHub
 17. Setup git from repo script (automated by postinstall script - see Usage section)
-18. Clone dotfiles repo
-19. From KeePassXC move GitHub keys to ~/.ssh
+18. From KeePassXC move GitHub keys to ~/.ssh
+19. Clone dotfiles repo
 20. stow mpv and mangohud configs
 21. Add user to docker group (automated by postinstall script - see Usage section)
 22. Change Ptyxis profile to fish
 23. Change font to JetBrainsMono Nerd Font in Ptyxis
-24. Set font to 12px in terminal
+24. Set font size to 12px in Ptyxis
 
 ## Desktop Environment
 
@@ -48,6 +48,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 ## Gaming Setup - Steam
 
 26. Login to Steam
+27. Install Proton-GE Latest from ProtonPlus
 27. Configure Steam settings:
     - Disable "Run Steam when my computer starts"
     - Enable "GPU accelerated rendering in web views" (requires restart)
