@@ -75,7 +75,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
     distrobox-assemble create fedora-postinstall/distrobox/goxlr-utility
     ```
 33. Launch GoXLR Utility
-34. Fix GoXLR profiles
+34. Setup GoXLR profiles (profile and mic profile)
 
 ## Usage
 
