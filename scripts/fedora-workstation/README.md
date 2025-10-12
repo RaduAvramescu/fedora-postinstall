@@ -8,7 +8,6 @@ Type the following commands in a terminal:
 
 ```
 git clone https://github.com/RaduAvramescu/fedora-postinstall.git
-cd fedora-postinstall/scripts/fedora-workstation
-chmod u+x ./fedora-workstation-postinstall.sh
-./fedora-workstation-postinstall.sh
+chmod u+x fedora-postinstall/scripts/fedora-workstation/fedora-workstation-postinstall.sh
+fedora-postinstall/scripts/fedora-workstation/fedora-workstation-postinstall.sh
 ```
