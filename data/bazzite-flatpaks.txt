@@ -3,7 +3,7 @@ com.vysp3r.ProtonPlus
 com.obsproject.Studio
 org.mozilla.Thunderbird
 org.gimp.GIMP
-io.mpv.Mpv
+io.github.celluloid_player.Celluloid
 com.discordapp.Discord
 im.riot.Riot
 org.deskflow.deskflow
