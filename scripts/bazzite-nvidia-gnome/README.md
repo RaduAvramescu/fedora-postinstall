@@ -25,7 +25,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 ## Application Installation
 
-13. Install flatpaks: KeePassXC, ProtonPlus, OBS Studio, Thunderbird, GIMP, mpv, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
+13. Install flatpaks: KeePassXC, ProtonPlus, OBS Studio, Thunderbird, GIMP, Celluloid, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
 14. Run `brew install stow starship` (automated by postinstall script - see Usage section)
 
 ## Development Tools
