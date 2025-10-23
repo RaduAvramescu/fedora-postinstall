@@ -6,13 +6,9 @@ function install_fonts() {
                     Installing fonts
 -------------------------------------------------------------------------
 "
-    FONT_DIR=~/.local/share/fonts/NerdFonts
-    sudo mkdir -p "${FONT_DIR}"
-    cd "${FONT_DIR}"
-    sudo curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-    sudo unzip JetBrainsMono.zip
-    sudo rm -rf JetBrainsMono.zip
-    fc-cache -f "${FONT_DIR}"
+    sudo mkdir -p ~/.local/share/fonts/nerd-fonts
+    sudo curl -fL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz | sudo tar --extract --xz --directory ~/.local/share/fonts/nerd-fonts
+    fc-cache -f
 }
 
 install_fonts
