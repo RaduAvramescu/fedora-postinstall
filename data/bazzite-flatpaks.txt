@@ -9,3 +9,4 @@ im.riot.Riot
 org.deskflow.deskflow
 com.mikrotik.WinBox
 io.github.ilya_zlobintsev.LACT
+com.stremio.Stremio
