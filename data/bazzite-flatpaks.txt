@@ -1,4 +1,3 @@
-org.keepassxc.KeePassXC
 com.vysp3r.ProtonPlus
 com.obsproject.Studio
 org.mozilla.Thunderbird
