@@ -77,6 +77,9 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
     ```
 33. Launch GoXLR Utility
 34. Setup GoXLR profiles (profile and mic profile)
+35. Enable "AutoStart on Login"
+36. Run `nano ~/.config/autostart/goxlr-daemon.desktop`
+37. Change `Exec` line to `Exec=distrobox enter goxlr-utility -- goxlr-daemon`
 
 ## Usage
 
