@@ -25,7 +25,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 
 ## Application Installation
 
-13. Install flatpaks: KeePassXC, ProtonPlus, OBS Studio, Thunderbird, GIMP, Celluloid, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
+13. Install flatpaks: ProtonPlus, OBS Studio, Thunderbird, GIMP, Celluloid, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
 14. Run `brew install stow starship` (automated by postinstall script - see Usage section)
 
 ## Development Tools
@@ -33,7 +33,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 15. Run `brew analytics off` (automated by postinstall script - see Usage section)
 16. Login to GitHub
 17. Setup git from repo script (automated by postinstall script - see Usage section)
-18. From KeePassXC move GitHub keys to ~/.ssh
+18. From password manager, move GitHub keys to ~/.ssh
 19. Clone dotfiles repo
 20. stow mpv and mangohud configs
 21. Add user to docker group (automated by postinstall script - see Usage section)
