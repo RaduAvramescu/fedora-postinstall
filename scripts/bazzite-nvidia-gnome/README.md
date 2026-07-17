@@ -26,7 +26,7 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 ## Application Installation
 
 13. Install flatpaks: ProtonPlus, OBS Studio, Thunderbird, GIMP, Celluloid, Discord, Element, Deskflow, WinBox, LACT (automated by postinstall script - see Usage section)
-14. Run `brew install stow starship` (automated by postinstall script - see Usage section)
+14. Install chezmoi with Homebrew (automated by postinstall script - see Usage section)
 
 ## Development Tools
 
@@ -34,8 +34,24 @@ This is my personal setup guide for Bazzite Nvidia GNOME installations. Follow t
 16. Login to GitHub
 17. Setup git from repo script (automated by postinstall script - see Usage section)
 18. From password manager, move GitHub keys to ~/.ssh
-19. Clone dotfiles repo
-20. stow mpv and mangohud configs
+19. Initialize the dotfiles repo with chezmoi over SSH:
+    ```sh
+    chezmoi init --ssh RaduAvramescu/dotfiles
+    ```
+    If GitHub SSH access is not available, use HTTPS instead:
+    ```sh
+    chezmoi init RaduAvramescu/dotfiles
+    ```
+20. Review and apply the dotfiles and their Homebrew packages:
+    ```sh
+    chezmoi status
+    chezmoi diff
+    chezmoi apply "$HOME/Brewfile"
+    brew bundle --file="$HOME/Brewfile"
+    chezmoi diff
+    chezmoi apply
+    ```
+    The dotfiles Brewfile installs Starship and the other managed command-line packages. The postinstall script only installs chezmoi and does not initialize or apply the dotfiles automatically.
 21. Add user to docker group (automated by postinstall script - see Usage section)
 22. Change Ptyxis profile to fish
 23. Change font to JetBrainsMono Nerd Font in Ptyxis
@@ -91,4 +107,4 @@ chmod u+x fedora-postinstall/scripts/bazzite-nvidia-gnome/bazzite-nvidia-gnome-p
 fedora-postinstall/scripts/bazzite-nvidia-gnome/bazzite-nvidia-gnome-postinstall.sh
 ```
 
-The script will automate flatpak installation, Homebrew package installation, git setup, GNOME configuration, and docker group setup. Most other steps require manual configuration and are documented above.
+The script will automate flatpak installation, chezmoi installation, git setup, GNOME configuration, and docker group setup. Initializing, reviewing, and applying the dotfiles remains a manual process as documented above. Most other steps also require manual configuration.
