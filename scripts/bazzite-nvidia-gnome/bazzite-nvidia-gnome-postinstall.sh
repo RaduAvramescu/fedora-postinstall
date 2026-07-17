@@ -13,7 +13,7 @@ chmod u+x ../generic/install-flatpaks.sh
 
 # Install brew packages
 chmod u+x ../generic/install-brew-packages.sh
-../generic/install-brew-packages.sh stow starship
+../generic/install-brew-packages.sh chezmoi
 
 echo -ne "
 =========================================================================
