@@ -90,5 +90,14 @@ Steam and ProtonPlus are installed as Flatpaks by the script.
 
 1. Sign in to Steam.
 2. Use ProtonPlus to install GE-Proton for the Flatpak Steam installation, then restart Steam.
-3. Configure Steam's startup, library performance, and compatibility preferences.
-4. Install your games and select the desired compatibility tool where needed.
+3. Configure Steam settings:
+
+   - Run Steam when my computer starts: disabled.
+   - GPU accelerated rendering in web views: enabled (requires restart).
+   - Low Bandwidth Mode: enabled.
+   - Low Performance Mode: enabled.
+   - Disable Community Content: enabled.
+   - Enable Shader Pre-caching: disabled.
+   - Default compatibility tool: GE-Proton.
+
+4. Install your games.
