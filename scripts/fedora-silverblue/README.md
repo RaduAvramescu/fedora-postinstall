@@ -40,7 +40,7 @@ Configure these preferences manually as desired; the script leaves them unchange
 
 1. Set up Firefox and uBlock Origin medium mode.
 2. Sign in to Thunderbird, Discord, Element, and other installed applications as needed.
-3. The LACT Flatpak supplies the interface; install and enable its host daemon separately using the [upstream installation instructions](https://github.com/ilya-zlobintsev/LACT#installation) for Fedora Atomic desktops before using it.
+3. Launch LACT and accept its prompt to set up the system service needed to change GPU settings. The Flatpak sets up and starts this service outside its sandbox; see the [upstream Flatpak instructions](https://github.com/ilya-zlobintsev/LACT/blob/master/flatpak/README.md). You can check the service with `systemctl status lactd`.
 
 ### Personal LACT Settings
 
