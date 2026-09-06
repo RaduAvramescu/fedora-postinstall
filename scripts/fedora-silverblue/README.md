@@ -59,7 +59,7 @@ Install GoXLR Utility from the [GoXLR-on-Linux/GoXLR-Utility repository](https:/
 
 ## Development Tools and Dotfiles
 
-1. Restore your GitHub SSH keys from your password manager to `~/.ssh`, set their permissions, and configure your SSH agent. The optional Git setup enables SSH commit signing.
+1. Follow GitHub's guide to [generate a new SSH key and add it to your SSH agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux), then [add the public key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). The optional Git setup enables SSH commit signing; to use the same key for authentication and signing, register it with GitHub separately for each purpose.
 2. Initialize the dotfiles repository:
 
    ```sh
