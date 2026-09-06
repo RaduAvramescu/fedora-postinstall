@@ -19,7 +19,9 @@ function install_terminal() {
 "
 
     # Install homebrew first
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    local brew_installer
+    brew_installer=$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) || return
+    /bin/bash -c "$brew_installer" || return
 
     # DNF packages
     dnf_packages=("alacritty")

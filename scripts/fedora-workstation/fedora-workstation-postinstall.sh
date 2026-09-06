@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Fedora Workstation postinstall script
+set -euo pipefail
 
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+repo_dir=$(cd -- "$script_dir/../.." && pwd)
+generic_dir="$repo_dir/scripts/generic"
 
 function add_rpm_fusion_repos() {
     echo -ne "
@@ -8,13 +12,15 @@ function add_rpm_fusion_repos() {
                     Adding RPM free and nonfree repos
 -------------------------------------------------------------------------
 "
-    sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-    chmod u+x ../generic/prompt-rpm.sh
-    ../generic/prompt-rpm.sh
+    local fedora_version
+    fedora_version=$(rpm -E %fedora)
+    sudo dnf install -y "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${fedora_version}.noarch.rpm" "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${fedora_version}.noarch.rpm"
+    bash -e -o pipefail "$generic_dir/prompt-rpm.sh"
 }
 
 function prompt_rpm_fusion_repos() {
-    read -p "Do you want to add RPM Fusion Free and Nonfree repos? (y/N) " answer
+    local answer
+    read -r -p "Do you want to add RPM Fusion Free and Nonfree repos? (y/N) " answer
 
     case $answer in 
         y ) add_rpm_fusion_repos;;
@@ -54,40 +60,33 @@ sudo dnf upgrade -y --refresh
 mkdir -p ~/Repos
 
 # Setup git
-chmod u+x ../generic/setup-git.sh
-../generic/setup-git.sh
+bash -e -o pipefail "$generic_dir/setup-git.sh"
 
 prompt_rpm_fusion_repos
 
 # Handle GPU setup
-if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
+if grep -E "NVIDIA|GeForce" <<< "$gpu_type"; then
     install_nvidia_drivers
 fi
 
 remove_default_pkgs
 
 # Setup flatpaks
-chmod u+x ../generic/setup-flathub.sh
-../generic/setup-flathub.sh
-chmod u+x ../generic/install-flatpaks.sh
-../generic/install-flatpaks.sh "flatpaks" "../../data/flatpaks.txt"
+bash -e -o pipefail "$generic_dir/setup-flathub.sh"
+bash -e -o pipefail "$generic_dir/install-flatpaks.sh" "flatpaks" "$repo_dir/data/flatpaks.txt"
 
 # Setup terminal
-chmod u+x ../generic/install-terminal.sh
-../generic/install-terminal.sh
-chmod u+x ../generic/install-fonts.sh
-../generic/install-fonts.sh
+bash -e -o pipefail "$generic_dir/install-terminal.sh"
+bash -e -o pipefail "$generic_dir/install-fonts.sh"
 
 # Setup desktop environment
-case $XDG_SESSION_DESKTOP in
+case ${XDG_SESSION_DESKTOP:-} in
     gnome | GNOME)
-        chmod u+x ../generic/setup-gnome.sh
-        ../generic/setup-gnome.sh
+        bash -e -o pipefail "$generic_dir/setup-gnome.sh"
         ;;
 
     kde | KDE)
-        chmod u+x ../generic/setup-kde.sh
-        ../generic/setup-kde.sh
+        bash -e -o pipefail "$generic_dir/setup-kde.sh"
         ;;
 
     *)

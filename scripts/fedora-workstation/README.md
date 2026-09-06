@@ -11,3 +11,5 @@ git clone https://github.com/RaduAvramescu/fedora-postinstall.git
 chmod u+x fedora-postinstall/scripts/fedora-workstation/fedora-workstation-postinstall.sh
 fedora-postinstall/scripts/fedora-workstation/fedora-workstation-postinstall.sh
 ```
+
+The script can be launched from any working directory. It resolves helper scripts and package lists relative to the repository and stops if a setup step fails.
