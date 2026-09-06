@@ -40,6 +40,10 @@ Apply these settings manually in LACT:
 - GPU P-State 0 Clock Offset: 400
 - VRAM P-State 0 Clock Offset: 2000
 
+## GoXLR Utility
+
+Install GoXLR Utility from the [GoXLR-on-Linux/GoXLR-Utility repository](https://github.com/GoXLR-on-Linux/GoXLR-Utility), following its installation instructions for Fedora Atomic desktops.
+
 ## Development Tools and Dotfiles
 
 1. Restore your GitHub SSH keys from your password manager to `~/.ssh`, set their permissions, and configure your SSH agent. The optional Git setup enables SSH commit signing.
