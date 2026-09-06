@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 function setup_git() {
     echo -ne "
@@ -6,14 +7,16 @@ function setup_git() {
                     Setting up git
 -------------------------------------------------------------------------
 "
-    echo "Name: "
-    read name
-    git config --global --unset user.name
-    git config --global user.name ${name}
-    echo "Email Address: "
-    read email
-    git config --global --unset user.email
-    git config --global user.email ${email}
+    local name email
+    read -r -p "Name: " name
+    read -r -p "Email Address: " email
+    if [[ -z "$name" || -z "$email" ]]; then
+        echo "Name and email address must not be empty." >&2
+        return 1
+    fi
+
+    git config --global --replace-all user.name "$name"
+    git config --global --replace-all user.email "$email"
     git config --global init.defaultBranch main
 
     # Setup commit signing
@@ -24,15 +27,19 @@ function setup_git() {
 }
 
 function prompt_git() {
-    if [ $(which git) ]; then
-        read -p "Do you want to setup git? (y/N) " answer
-
-        case $answer in
-            y ) setup_git;;
-            N ) ;;
-            * ) ;;
-        esac
+    if ! command -v git > /dev/null 2>&1; then
+        echo "Git is not installed." >&2
+        return 1
     fi
+
+    local answer
+    read -r -p "Do you want to setup git? (y/N) " answer
+
+    case $answer in
+        y ) setup_git;;
+        N ) ;;
+        * ) ;;
+    esac
 }
 
 prompt_git

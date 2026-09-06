@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+repo_dir=$(cd -- "$script_dir/../.." && pwd)
 
 function install_rpms() {
     echo -ne "
@@ -7,10 +11,12 @@ function install_rpms() {
 -------------------------------------------------------------------------
 "
 
-    cat "../data/rpms.txt" | while read line
+    local line
+    while IFS= read -r line || [[ -n "$line" ]]
     do
+        [[ -z "$line" ]] && continue
         sudo dnf install -y "${line}"
-    done
+    done < "$repo_dir/data/rpms.txt"
 }
 
 install_rpms

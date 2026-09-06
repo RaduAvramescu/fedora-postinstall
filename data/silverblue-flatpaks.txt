@@ -1,8 +1,8 @@
+com.valvesoftware.Steam
 com.vysp3r.ProtonPlus
 com.obsproject.Studio
 org.mozilla.Thunderbird
 org.gimp.GIMP
-io.github.celluloid_player.Celluloid
 com.discordapp.Discord
 im.riot.Riot
 org.deskflow.deskflow

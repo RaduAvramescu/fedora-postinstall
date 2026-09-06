@@ -1,31 +1,44 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+function setup_terminal_shortcut() {
+    local terminal_command=$1
+    local media_keys_schema=org.gnome.settings-daemon.plugins.media-keys
+    local shortcut_path=/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/fedora-postinstall-terminal/
+    local shortcut_schema="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$shortcut_path"
+    local custom_keybindings
+
+    custom_keybindings=$(gsettings get "$media_keys_schema" custom-keybindings)
+    # Empty GVariant arrays may include an explicit type annotation.
+    custom_keybindings=${custom_keybindings#@as }
+
+    gsettings set "$shortcut_schema" binding '<Primary><Alt>t'
+    gsettings set "$shortcut_schema" command "$terminal_command"
+    gsettings set "$shortcut_schema" name 'Terminal'
+
+    # Preserve other shortcuts and register our dedicated path only once.
+    if [[ "$custom_keybindings" != *"'$shortcut_path'"* ]]; then
+        if [[ "$custom_keybindings" == '[]' ]]; then
+            custom_keybindings="['$shortcut_path']"
+        else
+            custom_keybindings="${custom_keybindings%]}, '$shortcut_path']"
+        fi
+        gsettings set "$media_keys_schema" custom-keybindings "$custom_keybindings"
+    fi
+}
 
 function handle_gnome_settings() {
+    local terminal_command=${1:-alacritty}
     echo -ne "
 -------------------------------------------------------------------------
                     Handling GNOME settings
 -------------------------------------------------------------------------
 "
-    # Disable automatic updates
-    gsettings set org.gnome.software download-updates false
-
-    # Remove mouse accel
-    gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
-
-    # Setup dark theme
-    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-    # Disable hot corners
-    gsettings set org.gnome.desktop.interface enable-hot-corners false
-
     # Add toggle fullscreen shortcut
     gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 
     # Add terminal shortcut (Ctrl + Alt + T)
-    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Primary><Alt>t'
-    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
-    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+    setup_terminal_shortcut "$terminal_command"
 
     # Remove dynamic workspaces
     gsettings set org.gnome.mutter dynamic-workspaces false
@@ -39,4 +52,4 @@ function handle_gnome_settings() {
     done
 }
 
-handle_gnome_settings
+handle_gnome_settings "$@"
