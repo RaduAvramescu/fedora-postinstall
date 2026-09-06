@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 function handle_gnome_settings() {
+    local terminal_command=${1:-alacritty}
     echo -ne "
 -------------------------------------------------------------------------
                     Handling GNOME settings
@@ -23,7 +24,7 @@ function handle_gnome_settings() {
 
     # Add terminal shortcut (Ctrl + Alt + T)
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Primary><Alt>t'
-    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "$terminal_command"
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
@@ -39,4 +40,4 @@ function handle_gnome_settings() {
     done
 }
 
-handle_gnome_settings
+handle_gnome_settings "$@"

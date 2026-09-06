@@ -1,20 +1,18 @@
-# Fedora and Bazzite Post-Installation Scripts
+# Fedora Post-Installation Scripts
 
-This repository contains my personal post-installation scripts and configurations for Fedora and Bazzite systems. It includes automated setup scripts, generic utilities, distrobox configurations, flatpak lists, and systemd services.
+This repository contains my personal post-installation scripts and configurations for Fedora Workstation and Fedora Silverblue. It includes automated setup scripts, generic utilities, and application lists.
 
 ## Contents
 
 - **scripts/** - Post-installation scripts for different distributions
   - **fedora-workstation/** - Fedora Workstation setup script
-  - **bazzite-nvidia-gnome/** - Bazzite Nvidia GNOME setup guide and script
+  - **fedora-silverblue/** - Fedora Silverblue setup guide and script
   - **generic/** - Reusable scripts for common tasks (flatpak installation, RPM installation, Git setup, GNOME/KDE configuration, fonts, terminal setup, etc.)
-- **distrobox/** - Distrobox configurations for containerized environments
 - **data/** - Data files including flatpak and RPM package lists
-- **systemd/** - Systemd service unit files
 
 ## Usage
 
-Navigate to the specific subdirectory for detailed instructions on using each script or configuration.
+Follow the guide for [Fedora Workstation](scripts/fedora-workstation/README.md) or [Fedora Silverblue](scripts/fedora-silverblue/README.md). Silverblue uses Flatpak for desktop applications and rpm-ostree for host packages; the Workstation DNF setup is specific to Workstation.
 
 ## Contributing
 
