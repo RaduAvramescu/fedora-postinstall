@@ -24,17 +24,19 @@ bash fedora-postinstall/scripts/fedora-silverblue/fedora-silverblue-postinstall.
 
 The script can be launched from any working directory. It enables the system Flathub remote, installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt), disables Homebrew analytics, installs chezmoi, offers Git configuration, and applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
 
-## Optional Desktop Preferences
+## Desktop Preferences
 
-Configure these preferences manually as desired; the script leaves them unchanged:
+Set these preferences manually; the script leaves them unchanged:
 
-- Bluetooth: disable if unused.
-- Display refresh rate: select the desired rate in Settings.
-- Login preferences: configure in Settings.
-- Mouse acceleration: disable for flat pointer movement.
-- Appearance: enable dark mode.
-- Hot corners: disable if unused.
-- Automatic update downloads in GNOME Software: choose whether to keep them enabled. If you disable them, run system and Flatpak updates manually.
+- Bluetooth: disabled.
+- Display refresh rate: highest available.
+- Atuomatic Login: enabled.
+- Mouse Acceleration: disabled.
+- Appearance: dark mode.
+- Hot Corner: disabled.
+- Automatic update downloads in GNOME Software: disabled.
+
+Run system and Flatpak updates manually.
 
 ## Browser and Application Setup
 
