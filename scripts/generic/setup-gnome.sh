@@ -7,18 +7,6 @@ function handle_gnome_settings() {
                     Handling GNOME settings
 -------------------------------------------------------------------------
 "
-    # Disable automatic updates
-    gsettings set org.gnome.software download-updates false
-
-    # Remove mouse accel
-    gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat
-
-    # Setup dark theme
-    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-    # Disable hot corners
-    gsettings set org.gnome.desktop.interface enable-hot-corners false
-
     # Add toggle fullscreen shortcut
     gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 

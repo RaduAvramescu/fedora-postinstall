@@ -6,7 +6,6 @@ This is my personal setup guide for Fedora Silverblue with GNOME.
 
 1. Update the system with `rpm-ostree upgrade`, then reboot to use the updated deployment.
 2. Install any hardware-specific drivers required by your machine before continuing. This script does not install NVIDIA drivers.
-3. Disable Bluetooth if unused, select the desired display refresh rate, and configure login preferences in Settings.
 
 Silverblue uses Flatpak for desktop applications, Toolbx for development environments, and `rpm-ostree install <package>` for packages that must run on the host. Reboot after layering host packages. See the [Silverblue overview](https://www.fedoraproject.org/atomic-desktops/silverblue/) and [package management guide](https://docs.fedoraproject.org/en-US/fedora-silverblue/getting-started/).
 
@@ -23,7 +22,19 @@ git clone https://github.com/RaduAvramescu/fedora-postinstall.git
 bash fedora-postinstall/scripts/fedora-silverblue/fedora-silverblue-postinstall.sh
 ```
 
-The script can be launched from any working directory. It enables the system Flathub remote, installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt), disables Homebrew analytics, installs chezmoi, offers Git configuration, and applies the shared GNOME settings. Those settings include dark mode, flat mouse acceleration, nine fixed workspaces, keyboard shortcuts, and disabling automatic update downloads in GNOME Software. Run system and Flatpak updates manually if you keep that setting.
+The script can be launched from any working directory. It enables the system Flathub remote, installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt), disables Homebrew analytics, installs chezmoi, offers Git configuration, and applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
+
+## Optional Desktop Preferences
+
+Configure these preferences manually as desired; the script leaves them unchanged:
+
+- Bluetooth: disable if unused.
+- Display refresh rate: select the desired rate in Settings.
+- Login preferences: configure in Settings.
+- Mouse acceleration: disable for flat pointer movement.
+- Appearance: enable dark mode.
+- Hot corners: disable if unused.
+- Automatic update downloads in GNOME Software: choose whether to keep them enabled. If you disable them, run system and Flatpak updates manually.
 
 ## Browser and Application Setup
 
