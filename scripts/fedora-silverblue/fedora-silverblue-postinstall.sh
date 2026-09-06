@@ -20,14 +20,14 @@ for required_command in rpm-ostree flatpak brew git gsettings; do
 done
 
 terminal_command=
-for candidate in ptyxis gnome-terminal alacritty; do
+for candidate in ghostty ptyxis gnome-terminal alacritty; do
     if command -v "$candidate" > /dev/null 2>&1; then
         terminal_command=$candidate
         break
     fi
 done
 if [[ -z "$terminal_command" ]]; then
-    echo "Install Ptyxis, GNOME Terminal, or Alacritty before running this script." >&2
+    echo "Install Ghostty, Ptyxis, GNOME Terminal, or Alacritty before running this script." >&2
     exit 1
 fi
 

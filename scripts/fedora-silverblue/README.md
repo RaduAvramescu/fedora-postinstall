@@ -14,7 +14,7 @@ Silverblue uses Flatpak for desktop applications, Toolbx for development environ
 
 Install Homebrew on the host using the [official Linux instructions](https://docs.brew.sh/Homebrew-on-Linux), then follow the installer's next steps to put `brew` on your shell's `PATH`. Use `rpm-ostree` to layer any missing host build dependencies (such as `gcc`, `gcc-c++`, `make`, and `patch`) and reboot before installing Homebrew; the DNF commands in those instructions are for traditional Fedora installations.
 
-Run the script from a terminal in your GNOME session as your normal user. It requires `rpm-ostree`, `flatpak`, `brew`, `git`, and `gsettings`, and an installed terminal: Ptyxis, GNOME Terminal, or Alacritty. The first available terminal in that order is used for Ctrl+Alt+T.
+Run the script from a terminal in your GNOME session as your normal user. It requires `rpm-ostree`, `flatpak`, `brew`, `git`, and `gsettings`, and an installed terminal: Ghostty, Ptyxis, GNOME Terminal, or Alacritty. The first available terminal in that order is used for Ctrl+Alt+T.
 
 ## Usage
 
