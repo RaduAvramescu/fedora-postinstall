@@ -27,9 +27,8 @@ function install_terminal() {
         install_if_missing "$package" "sudo dnf install -y $package"
     done
 
-    if ! command -v starship &> /dev/null && [[ ! -x "$HOME/.local/bin/starship" ]]; then
-        mkdir -p "$HOME/.local/bin"
-        curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir "$HOME/.local/bin"
+    if ! command -v starship &> /dev/null; then
+        curl -sS https://starship.rs/install.sh | sh
     else
         echo "starship is already installed"
     fi

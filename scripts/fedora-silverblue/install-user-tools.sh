@@ -21,7 +21,7 @@ echo "Installing Codex CLI"
 curl -fsSL https://chatgpt.com/codex/install.sh | sh
 
 echo "Installing Starship"
-curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir "$HOME/.local/bin"
+curl -sS https://starship.rs/install.sh | sh
 
 echo "Installing mise"
 curl -fsSL https://mise.run | sh
