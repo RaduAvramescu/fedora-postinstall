@@ -32,6 +32,8 @@ if [[ -z "$terminal_command" ]]; then
 fi
 
 echo "Step 1: Installing applications"
+rpm-ostree override remove firefox firefox-langpacks
+
 # Flatpak is provided by Silverblue; configure Flathub without DNF.
 flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify --system --enable flathub
@@ -46,4 +48,4 @@ bash "$generic_dir/setup-git.sh"
 echo "Step 3: Desktop environment setup"
 bash -e "$generic_dir/setup-gnome.sh" "$terminal_command"
 
-echo "Setup complete. Reboot to activate layered RPMs (including chezmoi and fish), then continue with the manual dotfiles and application setup in $script_dir/README.md."
+echo "Setup complete. Reboot to apply the Firefox RPM removal and activate chezmoi and fish, then continue with the manual dotfiles and application setup in $script_dir/README.md."

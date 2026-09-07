@@ -19,13 +19,14 @@ bash fedora-postinstall/scripts/fedora-silverblue/fedora-silverblue-postinstall.
 The script can be launched from any working directory. It:
 
 - Enables the system Flathub remote and installs the applications in [flatpaks.txt](../../data/flatpaks.txt).
+- Removes the Firefox RPMs with `rpm-ostree override remove firefox firefox-langpacks` before installing Flatpaks.
 - Layers the Fedora RPMs in [rpms.txt](../../data/rpms.txt): `chezmoi` and `fish`.
 - Runs the official standalone installers for [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [Starship](https://starship.rs/guide/), and [mise](https://mise.jdx.dev/getting-started.html).
 - Downloads JetBrains Mono Nerd Font from the [upstream Nerd Fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono` and refreshes the font cache.
 - Offers Git configuration.
 - Applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
 
-Reboot after the script finishes to activate chezmoi and fish before continuing with dotfiles setup.
+Reboot after the script finishes to apply the Firefox RPM removal and activate chezmoi and fish before continuing with dotfiles setup.
 
 ## Desktop Preferences
 
