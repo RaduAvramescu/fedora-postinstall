@@ -14,7 +14,7 @@ fi
 # Check prerequisites before installing applications or changing settings.
 for required_command in rpm-ostree flatpak git gsettings curl tar xz fc-cache; do
     if ! command -v "$required_command" > /dev/null 2>&1; then
-        echo "Missing $required_command. Complete the prerequisites in $script_dir/README.md first." >&2
+        echo "Missing required command: $required_command. Install it before running this script." >&2
         exit 1
     fi
 done

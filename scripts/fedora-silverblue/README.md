@@ -7,13 +7,9 @@ This is my personal setup guide for Fedora Silverblue with GNOME.
 1. Update the system with `rpm-ostree upgrade`, then reboot to use the updated deployment.
 2. Install any hardware-specific drivers required by your machine before continuing. This script does not install NVIDIA drivers.
 
-Silverblue uses Flatpak for desktop applications, Toolbx for development environments, and `rpm-ostree install <package>` for packages that must run on the host. Reboot after layering host packages. See the [Silverblue overview](https://www.fedoraproject.org/atomic-desktops/silverblue/) and [package management guide](https://docs.fedoraproject.org/en-US/fedora-silverblue/getting-started/).
-
-## Prerequisites
-
-Run the script from a terminal in your GNOME session as your normal user. It requires `rpm-ostree`, `flatpak`, `git`, `gsettings`, `curl`, `tar`, `xz`, and `fc-cache`, and an installed terminal: Ghostty, Ptyxis, GNOME Terminal, or Alacritty. The first available terminal in that order is used for Ctrl+Alt+T. Layer any missing prerequisites with `rpm-ostree` and reboot first.
-
 ## Usage
+
+Run the script from a terminal in your GNOME session as your normal user, without sudo.
 
 ```sh
 git clone https://github.com/RaduAvramescu/fedora-postinstall.git
