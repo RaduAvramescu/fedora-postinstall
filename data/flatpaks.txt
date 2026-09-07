@@ -1,13 +1,10 @@
-com.github.tchx84.Flatseal
 org.mozilla.firefox
 org.mozilla.Thunderbird
-org.libreoffice.LibreOffice
 org.gimp.GIMP
-io.mpv.Mpv
 com.discordapp.Discord
 im.riot.Riot
 com.obsproject.Studio
-org.pipewire.Helvum
-net.davidotek.pupgui2
 org.deskflow.deskflow
 com.mikrotik.WinBox
+io.github.ilya_zlobintsev.LACT
+com.stremio.Stremio

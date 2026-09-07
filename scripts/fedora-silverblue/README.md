@@ -7,22 +7,26 @@ This is my personal setup guide for Fedora Silverblue with GNOME.
 1. Update the system with `rpm-ostree upgrade`, then reboot to use the updated deployment.
 2. Install any hardware-specific drivers required by your machine before continuing. This script does not install NVIDIA drivers.
 
-Silverblue uses Flatpak for desktop applications, Toolbx for development environments, and `rpm-ostree install <package>` for packages that must run on the host. Reboot after layering host packages. See the [Silverblue overview](https://www.fedoraproject.org/atomic-desktops/silverblue/) and [package management guide](https://docs.fedoraproject.org/en-US/fedora-silverblue/getting-started/).
-
-## Prerequisites
-
-Install Homebrew on the host using the [official Linux instructions](https://docs.brew.sh/Homebrew-on-Linux), then follow the installer's next steps to put `brew` on your shell's `PATH`. Use `rpm-ostree` to layer any missing host build dependencies (such as `gcc`, `gcc-c++`, `make`, and `patch`) and reboot before installing Homebrew; the DNF commands in those instructions are for traditional Fedora installations.
-
-Run the script from a terminal in your GNOME session as your normal user. It requires `rpm-ostree`, `flatpak`, `brew`, `git`, and `gsettings`, and an installed terminal: Ghostty, Ptyxis, GNOME Terminal, or Alacritty. The first available terminal in that order is used for Ctrl+Alt+T.
-
 ## Usage
+
+Run the script from a terminal in your GNOME session as your normal user, without sudo.
 
 ```sh
 git clone https://github.com/RaduAvramescu/fedora-postinstall.git
 bash fedora-postinstall/scripts/fedora-silverblue/fedora-silverblue-postinstall.sh
 ```
 
-The script can be launched from any working directory. It enables the system Flathub remote, installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt), disables Homebrew analytics, installs chezmoi, offers Git configuration, and applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
+The script can be launched from any working directory. It:
+
+- Enables the system Flathub remote and installs the applications in [flatpaks.txt](../../data/flatpaks.txt).
+- Removes the Firefox RPMs with `rpm-ostree override remove firefox firefox-langpacks` before installing Flatpaks.
+- Layers the Fedora RPMs in [rpms.txt](../../data/rpms.txt): `chezmoi` and `fish`.
+- Runs the official standalone installers for [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [Starship](https://starship.rs/guide/), and [mise](https://mise.jdx.dev/getting-started.html).
+- Downloads JetBrains Mono Nerd Font from the [upstream Nerd Fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono` and refreshes the font cache.
+- Offers Git configuration.
+- Applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
+
+Reboot after the script finishes to apply the Firefox RPM removal and activate chezmoi and fish before continuing with dotfiles setup.
 
 ## Desktop Preferences
 
@@ -68,25 +72,25 @@ Install GoXLR Utility from the [GoXLR-on-Linux/GoXLR-Utility repository](https:/
 
    If GitHub SSH access is not available, use `chezmoi init RaduAvramescu/dotfiles` instead.
 
-3. Review and apply the dotfiles and their Homebrew packages:
+3. Review and apply the dotfiles:
 
    ```sh
    chezmoi status
    chezmoi diff
-   chezmoi apply "$HOME/Brewfile"
-   brew bundle --file="$HOME/Brewfile"
-   chezmoi diff
    chezmoi apply
    ```
 
-   The Brewfile installs Starship and the other managed command-line packages. Initializing and applying dotfiles remains manual.
+   Initializing and applying dotfiles remains manual. Configure Starship and mise shell integration in your dotfiles.
 
-4. Once fish and JetBrainsMono Nerd Font are installed, select them in your terminal preferences and set the font size to 12.
-5. Use `toolbox create` and `toolbox enter` for development packages that do not need to run on the host.
+4. Select fish and the installed JetBrainsMono Nerd Font in your terminal preferences and set the font size to 12.
 
 ## Gaming Setup
 
-Steam and ProtonPlus are installed as Flatpaks by the script.
+Install Steam and ProtonPlus from [gaming-flatpaks.txt](../../data/gaming-flatpaks.txt) separately after running the setup. From the repository root:
+
+```sh
+bash scripts/generic/install-flatpaks.sh "Gaming" data/gaming-flatpaks.txt
+```
 
 1. Sign in to Steam.
 2. Use ProtonPlus to install GE-Proton for the Flatpak Steam installation, then restart Steam.

@@ -28,7 +28,16 @@ function setup_terminal_shortcut() {
 }
 
 function handle_gnome_settings() {
-    local terminal_command=${1:-alacritty}
+    local terminal_command=${1:-}
+    local candidate
+    if [[ -z "$terminal_command" ]]; then
+        for candidate in ghostty ptyxis gnome-terminal alacritty; do
+            if command -v "$candidate" > /dev/null 2>&1; then
+                terminal_command=$candidate
+                break
+            fi
+        done
+    fi
     echo -ne "
 -------------------------------------------------------------------------
                     Handling GNOME settings
@@ -38,7 +47,11 @@ function handle_gnome_settings() {
     gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 
     # Add terminal shortcut (Ctrl + Alt + T)
-    setup_terminal_shortcut "$terminal_command"
+    if [[ -n "$terminal_command" ]]; then
+        setup_terminal_shortcut "$terminal_command"
+    else
+        echo "No supported terminal found; skipping the terminal shortcut."
+    fi
 
     # Remove dynamic workspaces
     gsettings set org.gnome.mutter dynamic-workspaces false
