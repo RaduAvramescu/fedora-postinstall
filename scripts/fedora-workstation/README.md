@@ -12,6 +12,12 @@ chmod u+x fedora-postinstall/scripts/fedora-workstation/fedora-workstation-posti
 fedora-postinstall/scripts/fedora-workstation/fedora-workstation-postinstall.sh
 ```
 
-The script can be launched from any working directory. It resolves helper scripts and package lists relative to the repository and stops if a setup step fails.
+The script can be launched from any working directory. Terminal setup:
 
-Terminal setup installs Alacritty, fish, and tmux with DNF, and Starship using `curl -sS https://starship.rs/install.sh | sh` with the installer's default prompts and installation directory. Configure Starship in your shell settings. JetBrains Mono Nerd Font is downloaded from upstream into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono` and the font cache is refreshed. Font installation requires `curl`, `tar`, `xz`, and `fc-cache`; run the setup as your normal desktop user.
+- Installs Alacritty, fish, and tmux with DNF.
+- Runs the official standalone installer for [Starship](https://starship.rs/guide/).
+- Downloads JetBrains Mono Nerd Font from the [upstream Nerd Fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono` and refreshes the font cache.
+
+Run the setup as your normal desktop user. Font installation requires `curl`, `tar`, `xz`, and `fc-cache`.
+
+Configure Starship in your shell settings after installation.
