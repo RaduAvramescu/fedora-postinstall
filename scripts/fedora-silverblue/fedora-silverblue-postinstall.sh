@@ -37,7 +37,7 @@ flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/fla
 flatpak remote-modify --system --enable flathub
 bash -e "$generic_dir/install-flatpaks.sh" "Silverblue applications" "$repo_dir/data/silverblue-flatpaks.txt"
 
-rpm-ostree install --idempotent chezmoi
+rpm-ostree install --idempotent chezmoi fish
 
 echo "Step 2: Development tools setup"
 bash "$script_dir/install-user-tools.sh"
@@ -46,4 +46,4 @@ bash "$generic_dir/setup-git.sh"
 echo "Step 3: Desktop environment setup"
 bash -e "$generic_dir/setup-gnome.sh" "$terminal_command"
 
-echo "Setup complete. Reboot to activate layered RPMs (including chezmoi), then continue with the manual dotfiles and application setup in $script_dir/README.md."
+echo "Setup complete. Reboot to activate layered RPMs (including chezmoi and fish), then continue with the manual dotfiles and application setup in $script_dir/README.md."
