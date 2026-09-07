@@ -35,7 +35,7 @@ echo "Step 1: Installing applications"
 # Flatpak is provided by Silverblue; configure Flathub without DNF.
 flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify --system --enable flathub
-bash -e "$generic_dir/install-flatpaks.sh" "Silverblue applications" "$repo_dir/data/silverblue-flatpaks.txt"
+bash -e "$generic_dir/install-flatpaks.sh" "Silverblue applications" "$repo_dir/data/flatpaks.txt"
 
 bash "$generic_dir/install-rpms.sh" rpm-ostree
 

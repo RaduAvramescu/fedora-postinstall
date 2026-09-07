@@ -18,7 +18,7 @@ bash fedora-postinstall/scripts/fedora-silverblue/fedora-silverblue-postinstall.
 
 The script can be launched from any working directory. It:
 
-- Enables the system Flathub remote and installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt).
+- Enables the system Flathub remote and installs the applications in [flatpaks.txt](../../data/flatpaks.txt).
 - Layers the Fedora RPMs in [rpms.txt](../../data/rpms.txt): `chezmoi` and `fish`.
 - Runs the official standalone installers for [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [Starship](https://starship.rs/guide/), and [mise](https://mise.jdx.dev/getting-started.html).
 - Downloads JetBrains Mono Nerd Font from the [upstream Nerd Fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono` and refreshes the font cache.
@@ -85,7 +85,11 @@ Install GoXLR Utility from the [GoXLR-on-Linux/GoXLR-Utility repository](https:/
 
 ## Gaming Setup
 
-Steam and ProtonPlus are installed as Flatpaks by the script.
+Install Steam and ProtonPlus from [gaming-flatpaks.txt](../../data/gaming-flatpaks.txt) separately after running the setup. From the repository root:
+
+```sh
+bash scripts/generic/install-flatpaks.sh "Gaming" data/gaming-flatpaks.txt
+```
 
 1. Sign in to Steam.
 2. Use ProtonPlus to install GE-Proton for the Flatpak Steam installation, then restart Steam.
