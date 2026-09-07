@@ -14,9 +14,6 @@ for required_command in curl tar xz fc-cache; do
     fi
 done
 
-mkdir -p "$HOME/.local/bin"
-export PATH="$HOME/.local/bin:$PATH"
-
 echo "Installing Codex CLI"
 curl -fsSL https://chatgpt.com/codex/install.sh | sh
 
