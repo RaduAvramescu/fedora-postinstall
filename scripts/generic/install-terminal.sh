@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 function install_if_missing() {
     local package=$1
@@ -18,24 +19,20 @@ function install_terminal() {
 -------------------------------------------------------------------------
 "
 
-    # Install homebrew first
-    local brew_installer
-    brew_installer=$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh) || return
-    /bin/bash -c "$brew_installer" || return
-
     # DNF packages
-    dnf_packages=("alacritty")
+    local package
+    local -a dnf_packages=("alacritty" "fish" "tmux")
 
     for package in "${dnf_packages[@]}"; do
         install_if_missing "$package" "sudo dnf install -y $package"
     done
 
-    # Homebrew packages
-    brew_packages=("starship" "fish" "tmux")
-
-    for package in "${brew_packages[@]}"; do
-        install_if_missing "$package" "brew install $package"
-    done
+    if ! command -v starship &> /dev/null && [[ ! -x "$HOME/.local/bin/starship" ]]; then
+        mkdir -p "$HOME/.local/bin"
+        curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir "$HOME/.local/bin"
+    else
+        echo "starship is already installed"
+    fi
 
     # Install tpm if not already cloned
     if [ ! -d ~/.tmux/plugins/tpm ]; then

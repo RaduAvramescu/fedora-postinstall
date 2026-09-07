@@ -11,9 +11,7 @@ Silverblue uses Flatpak for desktop applications, Toolbx for development environ
 
 ## Prerequisites
 
-Install Homebrew on the host using the [official Linux instructions](https://docs.brew.sh/Homebrew-on-Linux), then follow the installer's next steps to put `brew` on your shell's `PATH`. Use `rpm-ostree` to layer any missing host build dependencies (such as `gcc`, `gcc-c++`, `make`, and `patch`) and reboot before installing Homebrew; the DNF commands in those instructions are for traditional Fedora installations.
-
-Run the script from a terminal in your GNOME session as your normal user. It requires `rpm-ostree`, `flatpak`, `brew`, `git`, and `gsettings`, and an installed terminal: Ghostty, Ptyxis, GNOME Terminal, or Alacritty. The first available terminal in that order is used for Ctrl+Alt+T.
+Run the script from a terminal in your GNOME session as your normal user. It requires `rpm-ostree`, `flatpak`, `git`, `gsettings`, `curl`, `tar`, `xz`, and `fc-cache`, and an installed terminal: Ghostty, Ptyxis, GNOME Terminal, or Alacritty. The first available terminal in that order is used for Ctrl+Alt+T. Layer any missing prerequisites with `rpm-ostree` and reboot first.
 
 ## Usage
 
@@ -22,7 +20,11 @@ git clone https://github.com/RaduAvramescu/fedora-postinstall.git
 bash fedora-postinstall/scripts/fedora-silverblue/fedora-silverblue-postinstall.sh
 ```
 
-The script can be launched from any working directory. It enables the system Flathub remote, installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt), disables Homebrew analytics, installs chezmoi, offers Git configuration, and applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
+The script can be launched from any working directory. It enables the system Flathub remote, installs the applications in [silverblue-flatpaks.txt](../../data/silverblue-flatpaks.txt), layers the Fedora `chezmoi` RPM, offers Git configuration, and applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
+
+It also runs the official standalone installers for [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [Starship](https://starship.rs/guide/), and [mise](https://mise.jdx.dev/getting-started.html). Starship is installed noninteractively into `~/.local/bin`; ensure that directory is on your shell's `PATH`. JetBrains Mono Nerd Font is downloaded from the [upstream Nerd Fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono`, then the font cache is refreshed. Rerunning the script reruns these installers and refreshes the font files.
+
+Reboot after the script finishes to activate chezmoi before continuing with dotfiles setup.
 
 ## Desktop Preferences
 
@@ -68,20 +70,17 @@ Install GoXLR Utility from the [GoXLR-on-Linux/GoXLR-Utility repository](https:/
 
    If GitHub SSH access is not available, use `chezmoi init RaduAvramescu/dotfiles` instead.
 
-3. Review and apply the dotfiles and their Homebrew packages:
+3. Review and apply the dotfiles:
 
    ```sh
    chezmoi status
    chezmoi diff
-   chezmoi apply "$HOME/Brewfile"
-   brew bundle --file="$HOME/Brewfile"
-   chezmoi diff
    chezmoi apply
    ```
 
-   The Brewfile installs Starship and the other managed command-line packages. Initializing and applying dotfiles remains manual.
+   Initializing and applying dotfiles remains manual. Configure Starship and mise shell integration in your dotfiles.
 
-4. Once fish and JetBrainsMono Nerd Font are installed, select them in your terminal preferences and set the font size to 12.
+4. Install fish if desired, then select it and the installed JetBrainsMono Nerd Font in your terminal preferences and set the font size to 12.
 5. Use `toolbox create` and `toolbox enter` for development packages that do not need to run on the host.
 
 ## Gaming Setup

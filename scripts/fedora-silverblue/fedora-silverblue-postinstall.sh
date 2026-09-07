@@ -12,7 +12,7 @@ if (( EUID == 0 )); then
 fi
 
 # Check prerequisites before installing applications or changing settings.
-for required_command in rpm-ostree flatpak brew git gsettings; do
+for required_command in rpm-ostree flatpak git gsettings curl tar xz fc-cache; do
     if ! command -v "$required_command" > /dev/null 2>&1; then
         echo "Missing $required_command. Complete the prerequisites in $script_dir/README.md first." >&2
         exit 1
@@ -37,13 +37,13 @@ flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/fla
 flatpak remote-modify --system --enable flathub
 bash -e "$generic_dir/install-flatpaks.sh" "Silverblue applications" "$repo_dir/data/silverblue-flatpaks.txt"
 
-brew analytics off
-bash -e "$generic_dir/install-brew-packages.sh" chezmoi
+rpm-ostree install --idempotent chezmoi
 
 echo "Step 2: Development tools setup"
+bash "$script_dir/install-user-tools.sh"
 bash "$generic_dir/setup-git.sh"
 
 echo "Step 3: Desktop environment setup"
 bash -e "$generic_dir/setup-gnome.sh" "$terminal_command"
 
-echo "Setup complete. Continue with the manual dotfiles and application setup in $script_dir/README.md."
+echo "Setup complete. Reboot to activate layered RPMs (including chezmoi), then continue with the manual dotfiles and application setup in $script_dir/README.md."
