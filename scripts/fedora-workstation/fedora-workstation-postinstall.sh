@@ -75,6 +75,9 @@ remove_default_pkgs
 bash -e -o pipefail "$generic_dir/setup-flathub.sh"
 bash -e -o pipefail "$generic_dir/install-flatpaks.sh" "flatpaks" "$repo_dir/data/flatpaks.txt"
 
+# Install shared host RPMs
+bash "$generic_dir/install-rpms.sh" dnf
+
 # Setup terminal
 bash -e -o pipefail "$generic_dir/install-terminal.sh"
 bash -e -o pipefail "$generic_dir/install-fonts.sh"

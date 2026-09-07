@@ -37,7 +37,7 @@ flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/fla
 flatpak remote-modify --system --enable flathub
 bash -e "$generic_dir/install-flatpaks.sh" "Silverblue applications" "$repo_dir/data/silverblue-flatpaks.txt"
 
-rpm-ostree install --idempotent chezmoi fish
+bash "$generic_dir/install-rpms.sh" rpm-ostree
 
 echo "Step 2: Development tools setup"
 bash "$script_dir/install-user-tools.sh"

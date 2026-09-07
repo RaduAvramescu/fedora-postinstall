@@ -1,2 +1,2 @@
-mangohud
-steam
+chezmoi
+fish

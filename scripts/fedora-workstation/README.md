@@ -12,9 +12,9 @@ chmod u+x fedora-postinstall/scripts/fedora-workstation/fedora-workstation-posti
 fedora-postinstall/scripts/fedora-workstation/fedora-workstation-postinstall.sh
 ```
 
-The script can be launched from any working directory. Terminal setup:
+The script can be launched from any working directory. RPM and terminal setup:
 
-- Installs Alacritty, fish, and tmux with DNF.
+- Installs the Fedora RPMs in [rpms.txt](../../data/rpms.txt) with DNF: `chezmoi` and `fish`.
 - Runs the official standalone installer for [Starship](https://starship.rs/guide/).
 - Downloads JetBrains Mono Nerd Font from the [upstream Nerd Fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) into `${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono` and refreshes the font cache.
 
