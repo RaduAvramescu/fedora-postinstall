@@ -34,7 +34,7 @@ Set these preferences manually; the script leaves them unchanged:
 
 - Bluetooth: disabled.
 - Display refresh rate: highest available.
-- Atuomatic Login: enabled.
+- Automatic Login: enabled.
 - Mouse Acceleration: disabled.
 - Appearance: dark mode.
 - Hot Corner: disabled.
