@@ -81,7 +81,6 @@ Install GoXLR Utility from the [GoXLR-on-Linux/GoXLR-Utility repository](https:/
    Initializing and applying dotfiles remains manual. Configure Starship and mise shell integration in your dotfiles.
 
 4. Select fish and the installed JetBrainsMono Nerd Font in your terminal preferences and set the font size to 12.
-5. Use `toolbox create` and `toolbox enter` for development packages that do not need to run on the host.
 
 ## Gaming Setup
 
