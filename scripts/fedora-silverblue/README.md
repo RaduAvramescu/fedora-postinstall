@@ -4,8 +4,35 @@ This is my personal setup guide for Fedora Silverblue with GNOME.
 
 ## Initial System Setup
 
-1. Update the system with `rpm-ostree upgrade`, then reboot to use the updated deployment.
-2. Install any hardware-specific drivers required by your machine before continuing. This script does not install NVIDIA drivers.
+Update the system:
+
+```sh
+rpm-ostree upgrade
+```
+
+Update Flatpak applications:
+
+```sh
+flatpak update
+```
+
+Then reboot to use the updated deployment.
+
+## Desktop Preferences
+
+Set these preferences manually:
+
+- Bluetooth: disabled.
+- Display refresh rate: highest available.
+- Automatic Login: enabled.
+- Mouse Acceleration: disabled.
+- Appearance: dark mode.
+- Hot Corner: disabled.
+- Automatic update downloads in GNOME Software: disabled.
+
+## NVIDIA Drivers
+
+If your machine has an NVIDIA GPU, follow the [Nvidia Fedora Guide](https://github.com/fady-saied/Nvidia-Fedora-Guide) to install the drivers, using its Fedora Atomic instructions for Silverblue, before running the post-installation script.
 
 ## Usage
 
@@ -27,20 +54,6 @@ The script can be launched from any working directory. It:
 - Applies the shared GNOME settings for nine fixed workspaces and keyboard shortcuts.
 
 Reboot after the script finishes to apply the Firefox RPM removal and activate chezmoi and fish before continuing with dotfiles setup.
-
-## Desktop Preferences
-
-Set these preferences manually; the script leaves them unchanged:
-
-- Bluetooth: disabled.
-- Display refresh rate: highest available.
-- Automatic Login: enabled.
-- Mouse Acceleration: disabled.
-- Appearance: dark mode.
-- Hot Corner: disabled.
-- Automatic update downloads in GNOME Software: disabled.
-
-Run system and Flatpak updates manually.
 
 ## Browser and Application Setup
 
